@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Award-winning digital agency specializing in cinematic web experiences, UI/UX design, and frontend architecture.">
+    <meta name="keywords" content="digital agency, web design, UI/UX, GSAP, glassmorphism, frontend development">
+    <meta name="author" content="Salman Ali">
+    <meta property="og:title" content="Premium Digital Agency | Cinematic Web Experiences">
+    <meta property="og:description" content="We craft award-winning websites with smooth animations, glassmorphism, and storytelling.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-agency.com">
+    <meta name="theme-color" content="#0A1628">
+    
+    <title>Premium Digital Agency | Cinematic Web Experiences</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollSmoother.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/SplitText.min.js"></script>
+    
+    <!-- Lenis -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.27/dist/lenis.min.js"></script>
+    
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <style>
+        /* ===== CSS Variables ===== */
+        :root {
+            --color-primary: #00F5FF;
+            --color-secondary: #0A1628;
+            --color-accent: #FFD700;
+            --color-neutral: #1E1E1E;
+            --color-light: #FFFFFF;
+            --color-dark: #000000;
+            --color-gray: #888888;
+            
+            --gradient-primary: linear-gradient(135deg, #00F5FF 0%, #00A2FF 100%);
+            --gradient-secondary: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            --gradient-dark: linear-gradient(180deg, #0A1628 0%, #1E1E1E 100%);
+            
+            --spacing-unit: 1rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 4rem;
+            --spacing-2xl: 6rem;
+            
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-pill: 50px;
+            
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-secondary: 'Playfair Display', serif;
+            
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.25rem;
+            --font-size-xl: 1.5rem;
+            --font-size-2xl: 2rem;
+            --font-size-3xl: 2.5rem;
+            --font-size-4xl: 3.5rem;
+            --font-size-5xl: 4.5rem;
+            
+            --line-height-tight: 1.1;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.8;
+            
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --z-index-1: 100;
+            --z-index-2: 200;
+            --z-index-3: 300;
+            --z-index-4: 400;
+            --z-index-5: 500;
+        }
+        
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            color: var(--color-light);
+            background: var(--gradient-dark);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* ===== Glassmorphism ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+        }
+        
+        /* ===== Soft Shadows ===== */
+        .shadow-soft {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .shadow-strong {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ===== Typography ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            line-height: var(--line-height-tight);
+        }
+        
+        h1 { font-size: var(--font-size-5xl); }
+        h2 { font-size: var(--font-size-4xl); }
+        h3 { font-size: var(--font-size-3xl); }
+        h4 { font-size: var(--font-size-2xl); }
+        h5 { font-size: var(--font-size-xl); }
+        h6 { font-size: var(--font-size-lg); }
+        
+        p {
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-relaxed);
+            opacity: 0.9;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            border-radius: var(--border-radius-pill);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--color-secondary);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 245, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* ===== Container ===== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+        
+        /* ===== Section ===== */
+        .section {
+            padding: var(--spacing-2xl) 0;
+            position: relative;
+        }
+        
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero__content {
+            text-align: center;
+            z-index: var(--z-index-2);
+        }
+        
+        .hero__title {
+            font-size: clamp(var(--font-size-3xl), 8vw, var(--font-size-5xl));
+            margin-bottom: var(--spacing-md);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .hero__subtitle {
+            font-size: var(--font-size-lg);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-lg);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .hero__cta {
+            display: flex;
+            gap: var(--spacing-unit);
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .hero__floating {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: var(--z-index-1);
+        }
+        
+        .hero__floating-item {
+            position: absolute;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(40px);
+        }
+        
+        .hero__floating-item:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: -10%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .hero__floating-item:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: 10%;
+            right: -10%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* ===== About Section ===== */
+        .about {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .about__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+        
+        .about__image {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+        }
+        
+        .about__image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform var(--transition-slow);
+        }
+        
+        .about__image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about__image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+        
+        .about__content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .about__content p {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        /* ===== Services Section ===== */
+        .services {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+        }
+        
+        .services__header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            border-color: rgba(0, 245, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
+        }
+        
+        .service-card__icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .service-card__title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .service-card__description {
+            opacity: 0.8;
+        }
+        
+        /* ===== Portfolio Section ===== */
+        .portfolio {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .portfolio__header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .portfolio__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .portfolio-card {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+            cursor: pointer;
+        }
+        
+        .portfolio-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-card__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(10, 22, 40, 0.9) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--spacing-lg);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+        }
+        
+        .portfolio-card:hover .portfolio-card__overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-card__title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .portfolio-card__category {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+        
+        /* ===== Testimonials Section ===== */
+        .testimonials {
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+        }
+        
+        .testimonials__header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .swiper {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .swiper-slide {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+        
+        .testimonial__text {
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .testimonial__author {
+            font-weight: 600;
+        }
+        
+        .testimonial__role {
+            opacity: 0.7;
+            font-size: var(--font-size-sm);
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--color-primary);
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        /* ===== FAQ Section ===== */
+        .faq {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .faq__header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .faq__list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+        }
+        
+        .faq-item__question {
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--transition-fast);
+        }
+        
+        .faq-item__question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-item__answer {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity var(--transition-normal), max-height var(--transition-normal);
+        }
+        
+        .faq-item__answer.is-open {
+            opacity: 1;
+            max-height: 500px;
+        }
+        
+        .faq-item__icon {
+            transition: transform var(--transition-fast);
+        }
+        
+        .faq-item.is-open .faq-item__icon {
+            transform: rotate(45deg);
+        }
+        
+        /* ===== Contact Section ===== */
+        .contact {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+        }
+        
+        .contact__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+        
+        .contact__info h3 {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .contact__info p {
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .contact__info svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-primary);
+        }
+        
+        .contact__form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-sm);
+            color: var(--color-light);
+            font-family: inherit;
+            transition: border-color var(--transition-fast);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--color-secondary);
+            padding: var(--spacing-2xl) 0 var(--spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .footer__column h4 {
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-primary);
+        }
+        
+        .footer__column ul {
+            list-style: none;
+        }
+        
+        .footer__column li {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer__column a {
+            opacity: 0.8;
+            transition: opacity var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .footer__column a:hover {
+            opacity: 1;
+            color: var(--color-primary);
+        }
+        
+        .footer__social {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .footer__social a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+        }
+        
+        .footer__social a:hover {
+            background: var(--color-primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer__social svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .footer__copyright {
+            text-align: center;
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: var(--font-size-sm);
+        }
+        
+        /* ===== Theme Toggle ===== */
+        .theme-toggle {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            right: var(--spacing-lg);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: var(--z-index-5);
+            transition: all var(--transition-fast);
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-light);
+        }
+        
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .about__grid,
+            .contact__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            :root {
+                --font-size-5xl: 3rem;
+                --font-size-4xl: 2.5rem;
+                --font-size-3xl: 2rem;
+            }
+            
+            .hero {
+                padding: var(--spacing-xl) 0;
+            }
+            
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+            
+            .portfolio__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero__cta {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+        
+        /* ===== Animations ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .reveal.is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--color-secondary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 245, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+        </svg>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__floating">
+            <div class="hero__floating-item"></div>
+            <div class="hero__floating-item"></div>
+        </div>
+        <div class="hero__content">
+            <h1 class="hero__title reveal">Crafting Cinematic<br>Digital Experiences</h1>
+            <p class="hero__subtitle reveal">We blend art, technology, and storytelling to create websites that captivate, engage, and inspire.</p>
+            <div class="hero__cta reveal">
+                <a href="#portfolio" class="btn btn-primary">View Our Work</a>
+                <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__image reveal">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="Our team collaborating" loading="lazy">
+                </div>
+                <div class="about__content">
+                    <h2 class="reveal">About Us</h2>
+                    <p class="reveal">We are a collective of designers, developers, and storytellers passionate about pushing the boundaries of digital experiences. Our approach combines cutting-edge technology with timeless design principles to create websites that are as beautiful as they are functional.</p>
+                    <p class="reveal">From concept to launch, we work closely with our clients to bring their vision to life. Whether it's a sleek portfolio, an immersive e-commerce platform, or a dynamic web application, we deliver solutions that drive results.</p>
+                    <a href="about.html" class="btn btn-primary reveal">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="services__header">
+                <h2 class="reveal">Our Services</h2>
+                <p class="reveal">We offer a full suite of services to bring your digital vision to life.</p>
+            </div>
+            <div class="services__grid">
+                <div class="service-card reveal">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.25 22.5l-.648-1.938a3.375 3.375 0 00-2.684-2.684L11.25 18l1.938-.648a3.375 3.375 0 002.684-2.684L16.25 13.5l.648 1.938a3.375 3.375 0 002.684 2.684L21.75 18l-1.938.648a3.375 3.375 0 00-2.684 2.684z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">UI/UX Design</h3>
+                    <p class="service-card__description">We design intuitive, visually stunning interfaces that delight users and drive conversions.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-6-7.5h12" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Frontend Development</h3>
+                    <p class="service-card__description">We build performant, accessible, and responsive frontends using modern HTML5, CSS3, and JavaScript.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.438.995s.145.755.438.995l1.003.827c.48.398.668 1.03.26 1.431l-1.296 2.247a1.125 1.125 0 01-1.37.49l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.214 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.063-.374-.313-.686-.645-.87a6.52 6.52 0 01-.22-.127c-.324-.196-.72-.257-1.075-.124l-1.217.456a1.125 1.125 0 01-1.37-.49l-1.296-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.437-.995s-.145-.755-.437-.995l-1.004-.827a1.125 1.125 0 01-.26-1.431l1.296-2.247a1.125 1.125 0 011.37-.49l1.217.456c.355.133.75.257 1.076-.124.072-.044.146-.087.22-.128.331-.183.581-.495.644-.869l.214-1.281z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Motion Design</h3>
+                    <p class="service-card__description">We bring your website to life with cinematic animations, GSAP timelines, and smooth transitions.</p>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-card__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Brand Strategy</h3>
+                    <p class="service-card__description">We help you define your brand's voice, visual identity, and digital strategy to stand out in a crowded market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="container">
+            <div class="portfolio__header">
+                <h2 class="reveal">Our Portfolio</h2>
+                <p class="reveal">Explore our latest projects and see how we turn ideas into reality.</p>
+            </div>
+            <div class="portfolio__grid">
+                <div class="portfolio-card reveal">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop" alt="Project 1" loading="lazy">
+                    <div class="portfolio-card__overlay">
+                        <h3 class="portfolio-card__title">E-Commerce Platform</h3>
+                        <p class="portfolio-card__category">UI/UX Design, Frontend Development</p>
+                    </div>
+                </div>
+                <div class="portfolio-card reveal">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop" alt="Project 2" loading="lazy">
+                    <div class="portfolio-card__overlay">
+                        <h3 class="portfolio-card__title">Corporate Website</h3>
+                        <p class="portfolio-card__category">Brand Strategy, Motion Design</p>
+                    </div>
+                </div>
+                <div class="portfolio-card reveal">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" alt="Project 3" loading="lazy">
+                    <div class="portfolio-card__overlay">
+                        <h3 class="portfolio-card__title">Mobile App</h3>
+                        <p class="portfolio-card__category">UI/UX Design, Frontend Development</p>
+                    </div>
+                </div>
+                <div class="portfolio-card reveal">
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=400&fit=crop" alt="Project 4" loading="lazy">
+                    <div class="portfolio-card__overlay">
+                        <h3 class="portfolio-card__title">Portfolio Website</h3>
+                        <p class="portfolio-card__category">Motion Design, Brand Strategy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="testimonials__header">
+                <h2 class="reveal">What Our Clients Say</h2>
+                <p class="reveal">Hear from the brands we've helped transform.</p>
+            </div>
+            <div class="swiper reveal">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <p class="testimonial__text">"The team at Premium Agency delivered a website that not only looks stunning but also performs flawlessly. Our conversions have skyrocketed since the launch!"</p>
+                        <p class="testimonial__author">Sarah Johnson</p>
+                        <p class="testimonial__role">CEO, TechStart</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <p class="testimonial__text">"Working with them was a game-changer. Their attention to detail and creative vision brought our brand to life in ways we never imagined."</p>
+                        <p class="testimonial__author">Michael Chen</p>
+                        <p class="testimonial__role">Founder, DesignLab</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <p class="testimonial__text">"From the initial concept to the final product, every step was seamless. The animations and design are top-notch. Highly recommend!"</p>
+                        <p class="testimonial__author">Emily Rodriguez</p>
+                        <p class="testimonial__role">Marketing Director, Global Corp</p>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq">
+        <div class="container">
+            <div class="faq__header">
+                <h2 class="reveal">Frequently Asked Questions</h2>
+                <p class="reveal">Got questions? We've got answers.</p>
+            </div>
+            <div class="faq__list">
+                <div class="faq-item reveal">
+                    <div class="faq-item__question">
+                        <span>What services do you offer?</span>
+                        <span class="faq-item__icon">+</span>
+                    </div>
+                    <div class="faq-item__answer">
+                        <p>We specialize in UI/UX design, frontend development, motion design, and brand strategy. Our goal is to create digital experiences that are both beautiful and functional.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-item__question">
+                        <span>How long does a project take?</span>
+                        <span class="faq-item__icon">+</span>
+                    </div>
+                    <div class="faq-item__answer">
+                        <p>Project timelines vary depending on the scope and complexity. A typical website project takes 4-8 weeks from start to finish.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-item__question">
+                        <span>Do you offer ongoing support?</span>
+                        <span class="faq-item__icon">+</span>
+                    </div>
+                    <div class="faq-item__answer">
+                        <p>Yes! We offer ongoing support and maintenance packages to ensure your website stays up-to-date and performs at its best.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-item__question">
+                        <span>What technologies do you use?</span>
+                        <span class="faq-item__icon">+</span>
+                    </div>
+                    <div class="faq-item__answer">
+                        <p>We use modern technologies like HTML5, CSS3, JavaScript (ES6+), GSAP for animations, and Lenis for smooth scrolling. We avoid frameworks like React or Bootstrap unless explicitly requested.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="contact__header" style="text-align: center; margin-bottom: var(--spacing-xl);">
+                <h2 class="reveal">Get in Touch</h2>
+                <p class="reveal">Ready to start your next project? Let's talk.</p>
+            </div>
+            <div class="contact__grid">
+                <div class="contact__info">
+                    <h3 class="reveal">Contact Info</h3>
+                    <p class="reveal">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" />
+                        </svg>
+                        +1 (555) 123-4567
+                    </p>
+                    <p class="reveal">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                        hello@premiumagency.com
+                    </p>
+                    <p class="reveal">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                        123 Digital Street, Tech City
+                    </p>
+                    <div class="footer__social" style="margin-top: var(--spacing-md);">
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact__form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column">
+                    <h4>Premium Agency</h4>
+                    <p>Crafting cinematic digital experiences that captivate, engage, and inspire.</p>
+                </div>
+                <div class="footer__column">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Frontend Development</a></li>
+                        <li><a href="#">Motion Design</a></li>
+                        <li><a href="#">Brand Strategy</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <p>&copy; 2026 Premium Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // ===== Lenis Smooth Scroll =====
+        const lenis = new Lenis({
+            lerp: 0.1,
+            smoothWheel: true,
+            wheelMultiplier: 0.8,
+        });
+        
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        
+        lenis.on('scroll', ScrollTrigger.update);
+        
+        // ===== GSAP Animations =====
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
+        
+        // Hero Text Reveal
+        const heroTitle = new SplitText('.hero__title', { type: 'chars' });
+        const heroSubtitle = new SplitText('.hero__subtitle', { type: 'lines' });
+        const heroCta = new SplitText('.hero__cta', { type: 'words' });
+        
+        gsap.from(heroTitle.chars, {
+            y: 50,
+            opacity: 0,
+            stagger: 0.03,
+            duration: 1,
+            ease: 'power3.out',
+        });
+        
+        gsap.from(heroSubtitle.lines, {
+            y: 30,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: 'power3.out',
+            delay: 0.3,
+        });
+        
+        gsap.from(heroCta.words, {
+            y: 20,
+            opacity: 0,
+            stagger: 0.05,
+            duration: 0.6,
+            ease: 'power3.out',
+            delay: 0.6,
+        });
+        
+        // Floating Objects Animation
+        gsap.to('.hero__floating-item:nth-child(1)', {
+            y: -20,
+            x: 10,
+            duration: 6,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+        });
+        
+        gsap.to('.hero__floating-item:nth-child(2)', {
+            y: 20,
+            x: -10,
+            duration: 8,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+        });
+        
+        // Scroll Reveals
+        gsap.utils.toArray('.reveal').forEach((element) => {
+            gsap.from(element, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none',
+                },
+            });
+        });
+        
+        // Service Cards Hover Tilt
+        gsap.utils.toArray('.service-card').forEach((card) => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    rotationY: 5,
+                    rotationX: 5,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    rotationY: 0,
+                    rotationX: 0,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                });
+            });
+        });
+        
+        // Portfolio Card Hover
+        gsap.utils.toArray('.portfolio-card').forEach((card) => {
+            const img = card.querySelector('img');
+            
+            card.addEventListener('mouseenter', () => {
+                gsap.to(img, {
+                    scale: 1.1,
+                    duration: 0.5,
+                    ease: 'power2.out',
+                });
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                gsap.to(img, {
+                    scale: 1,
+                    duration: 0.5,
+                    ease: 'power2.out',
+                });
+            });
+        });
+        
+        // FAQ Accordion
+        gsap.utils.toArray('.faq-item__question').forEach((question) => {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('.faq-item__icon');
+            const faqItem = question.parentElement;
+            
+            question.addEventListener('click', () => {
+                const isOpen = faqItem.classList.contains('is-open');
+                
+                // Close all other FAQ items
+                gsap.utils.toArray('.faq-item').forEach((item) => {
+                    if (item !== faqItem) {
+                        item.classList.remove('is-open');
+                        gsap.to(item.querySelector('.faq-item__answer'), {
+                            opacity: 0,
+                            maxHeight: 0,
+                            duration: 0.3,
+                            ease: 'power2.out',
+                        });
+                        gsap.to(item.querySelector('.faq-item__icon'), {
+                            rotation: 0,
+                            duration: 0.3,
+                            ease: 'power2.out',
+                        });
+                    }
+                });
+                
+                // Toggle current FAQ item
+                if (isOpen) {
+                    faqItem.classList.remove('is-open');
+                    gsap.to(answer, {
+                        opacity: 0,
+                        maxHeight: 0,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    });
+                    gsap.to(icon, {
+                        rotation: 0,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    });
+                } else {
+                    faqItem.classList.add('is-open');
+                    gsap.to(answer, {
+                        opacity: 1,
+                        maxHeight: answer.scrollHeight,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    });
+                    gsap.to(icon, {
+                        rotation: 45,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                    });
+                }
+            });
+        });
+        
+        // Swiper Slider
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            },
+        });
+        
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            
+            if (body.classList.contains('light-theme')) {
+                body.style.setProperty('--color-primary', '#00A2FF');
+                body.style.setProperty('--color-secondary', '#FFFFFF');
+                body.style.setProperty('--color-neutral', '#F5F5F5');
+                body.style.setProperty('--color-light', '#0A1628');
+                body.style.setProperty('--color-dark', '#FFFFFF');
+                body.style.setProperty('--color-gray', '#666666');
+                body.style.setProperty('--gradient-dark', 'linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%)');
+                themeToggle.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                `;
+            } else {
+                body.style.setProperty('--color-primary', '#00F5FF');
+                body.style.setProperty('--color-secondary', '#0A1628');
+                body.style.setProperty('--color-neutral', '#1E1E1E');
+                body.style.setProperty('--color-light', '#FFFFFF');
+                body.style.setProperty('--color-dark', '#000000');
+                body.style.setProperty('--color-gray', '#888888');
+                body.style.setProperty('--gradient-dark', 'linear-gradient(180deg, #0A1628 0%, #1E1E1E 100%)');
+                themeToggle.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                    </svg>
+                `;
+            }
+        });
+        
+        // Light Theme Styles
+        const lightThemeStyles = document.createElement('style');
+        lightThemeStyles.textContent = `
+            body.light-theme {
+                background: var(--gradient-dark);
+            }
+            
+            body.light-theme .glass {
+                background: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            body.light-theme .section {
+                background: transparent;
+            }
+            
+            body.light-theme .about,
+            body.light-theme .portfolio,
+            body.light-theme .testimonials,
+            body.light-theme .faq,
+            body.light-theme .contact {
+                background: rgba(255, 255, 255, 0.5);
+            }
+            
+            body.light-theme .footer {
+                background: #FFFFFF;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            body.light-theme .service-card,
+            body.light-theme .portfolio-card,
+            body.light-theme .swiper-slide,
+            body.light-theme .faq-item,
+            body.light-theme .contact__form {
+                background: rgba(255, 255, 255, 0.7);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            body.light-theme .form-group input,
+            body.light-theme .form-group textarea {
+                background: rgba(255, 255, 255, 0.5);
+                border: 1px solid rgba(0, 0, 0, 0.2);
+                color: var(--color-dark);
+            }
+            
+            body.light-theme .form-group input::placeholder,
+            body.light-theme .form-group textarea::placeholder {
+                color: rgba(0, 0, 0, 0.5);
+            }
+            
+            body.light-theme .theme-toggle {
+                background: rgba(0, 0, 0, 0.1);
+                border: 1px solid rgba(0, 0, 0, 0.2);
+            }
+            
+            body.light-theme .theme-toggle svg {
+                color: var(--color-dark);
+            }
+        `;
+        document.head.appendChild(lightThemeStyles);
+    </script>
+</body>
+</html>

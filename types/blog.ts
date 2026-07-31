@@ -1,0 +1,24 @@
+export type BlogArticle = {
+  slug: string;
+  title: string;
+  seoTitle: string;
+  seoDescription: string;
+  excerpt: string;
+  category: string;
+  tags: string[];
+  author: string;
+  authorTitle: string;
+  publishDate: string;
+  updatedDate: string;
+  readTime: string;
+  featured?: boolean;
+  trending?: boolean;
+  image: string;
+  heroLabel: string;
+  intro: string;
+  paragraphs: string[];
+  takeaways: string[];
+  faq: { question: string; answer: string }[];
+  ctaTitle: string;
+  ctaText: string;
+};
