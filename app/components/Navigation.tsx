@@ -185,7 +185,7 @@ export default function Navigation() {
       <div className="nav-inner">
         <div className="nav-left">
           <Link href="/" className="logo">
-            <img src="/logo.png" alt="Hired Billing Support" style={{ height: '90px', width: 'auto' }} />
+            <img src="/logo.png" alt="Hired Billing Support" />
           </Link>
           <button
             type="button"
