@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { House } from "lucide-react";
 
@@ -82,6 +82,9 @@ function TrustBadgesSection({ onClick }: TrustBadgesSectionProps) {
 export default function Navigation() {
   const router = useRouter();
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement | null>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -126,6 +129,7 @@ export default function Navigation() {
   // Close dropdown when a link is clicked
   const handleLinkClick = () => {
     setActiveDropdown(null);
+    setMobileMenuOpen(false);
   };
 
   // Handle mouse enter for dropdown
@@ -148,22 +152,90 @@ export default function Navigation() {
     setActiveDropdown(null);
   };
 
-  // Close dropdowns when clicking outside
+  // Close dropdowns and mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
       if (!target.closest('.nav-dropdown')) {
         setActiveDropdown(null);
       }
+
+      if (mobileMenuOpen && navRef.current && !navRef.current.contains(target)) {
+        closeMobileMenu();
+      }
     };
     document.addEventListener('click', handleClickOutside);
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      return;
+    }
+
+    const originalOverflow = document.body.style.overflow;
+    const originalHeight = document.body.style.height;
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100%';
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.height = originalHeight;
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMobileMenu();
+        return;
+      }
+
+      if (event.key === 'Tab') {
+        const focusableElements = mobileMenuRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+
+        if (!focusableElements || focusableElements.length === 0) {
+          event.preventDefault();
+          return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && document.activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    window.requestAnimationFrame(() => {
+      const firstFocusable = mobileMenuRef.current?.querySelector<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      firstFocusable?.focus();
+    });
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   return (
-    <nav className={`top ${scrolled ? 'scrolled' : ''}`} id="nav">
+    <nav className={`top ${scrolled ? 'scrolled' : ''}`} id="nav" ref={navRef}>
       {/* Contact Info Section */}
       <div className="nav-contact-top" style={{ justifyContent: 'space-between' }}>
         <a href="tel:+13213211740" className="contact-item">
@@ -185,13 +257,15 @@ export default function Navigation() {
       <div className="nav-inner">
         <div className="nav-left">
           <Link href="/" className="logo">
-            <img src="/logo.png" alt="Hired Billing Support" style={{ height: '90px', width: 'auto' }} />
+            <img src="/logo.png" alt="Hired Billing Support" style={{ height: '90px', width: 'auto', maxWidth: '100%', objectFit: 'contain' }} />
           </Link>
           <button
+            ref={mobileToggleRef}
             type="button"
             className={`mobile-menu-toggle${mobileMenuOpen ? ' open' : ''}`}
             aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             onClick={toggleMobileMenu}
           >
             <span />
@@ -201,7 +275,7 @@ export default function Navigation() {
         </div>
 
         <div className="nav-center">
-          <div className={`nav-items${mobileMenuOpen ? ' open' : ''}`}>
+          <div className={`nav-items${mobileMenuOpen ? ' open' : ''}`} id="mobile-navigation" ref={mobileMenuRef}>
 <Link href="/dental" className="nav-plain-link nav-link" onClick={handleLinkClick}>Dental</Link>
           <Link href="/medical" className="nav-plain-link nav-link" onClick={handleLinkClick}>Medical</Link>
 
