@@ -92,6 +92,82 @@ body {
     background: currentColor;
 }
 
+/* Navigation */
+nav.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: var(--paper-warm);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
+}
+
+nav.top.scrolled {
+  
+    border-bottom-color: var(--paper-line);
+}
+
+.nav-contact-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px clamp(24px, 2.5vw, 56px);
+    width: min(100%, 2200px);
+    max-width: clamp(1280px, 95vw, 2200px);
+    margin: 0 auto;
+    /* background: var(--paper-warm); */
+}
+
+.nav-inner {
+    width: min(100%, 2200px);
+    max-width: clamp(1280px, 95vw, 2200px);
+    margin: 0 auto;
+    padding: 12px clamp(24px, 2.5vw, 56px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 28px;
+    min-height: 80px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.logo-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--ink);
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.logo-mark::after {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border-radius: 50%;
+    background: var(--signal);
+}
+
+.nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+}
 
 .nav-links a {
     color: var(--ink-soft);
@@ -3320,7 +3396,7 @@ nav.top.scrolled {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 20px;
-  height: auto;
+  height: 74px;
   position: relative;
 }
 
@@ -3334,7 +3410,6 @@ nav.top.scrolled {
 
 .nav-left {
   justify-content: flex-start;
-  align-items: center;
   flex-shrink: 0;
   padding-right: 20px;
 }
@@ -3447,7 +3522,6 @@ nav.top.scrolled {
   letter-spacing: -0.02em;
   color: var(--ink);
   text-decoration: none;
-  flex-shrink: 0;
 }
 
 .logo-mark {
@@ -3649,14 +3723,6 @@ nav.top.scrolled {
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
-    min-height: 90px;
-  }
-
-  .logo img {
-    height: 90px !important;
-    max-height: 90px !important;
-    width: auto !important;
-    display: block;
   }
 
   .mobile-menu-toggle {
