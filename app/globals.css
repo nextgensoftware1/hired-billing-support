@@ -24,6 +24,8 @@
      --grad-start:#0A1628;--grad-mid:#0F1E36;--grad-end:#141F30;
 }
 
+/* (moved) mobile override for `.nav-contact-top` — relocated to end of file */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -42,6 +44,17 @@ body {
     line-height: 1.5;
     font-size: 16px;
     overflow-x: hidden;
+}
+
+.page-wrapper {
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding-top: 0;
+    }
 }
 
 ::selection {
@@ -94,21 +107,20 @@ body {
 
 /* Navigation */
 nav.top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    background: var(--paper-warm);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250,247,242,0.85);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border-bottom: 1px solid rgba(10,22,40,0.04);
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
 }
 
 nav.top.scrolled {
-  
-    border-bottom-color: var(--paper-line);
+  border-bottom-color: var(--paper-line);
 }
 
 .nav-contact-top {
@@ -123,15 +135,16 @@ nav.top.scrolled {
 }
 
 .nav-inner {
-    width: min(100%, 2200px);
-    max-width: clamp(1280px, 95vw, 2200px);
-    margin: 0 auto;
-    padding: 12px clamp(24px, 2.5vw, 56px);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 28px;
-    min-height: 80px;
+  width: min(100%, 2200px);
+  max-width: clamp(1280px, 95vw, 2200px);
+  margin: 0 auto;
+  padding: 12px 24px; /* Desktop symmetric padding */
+  display: flex;
+  align-items: center; /* Vertical center alignment */
+  justify-content: space-between;
+  gap: 20px;
+  height: auto;
+  min-height: 64px;
 }
 
 .logo {
@@ -3396,7 +3409,8 @@ nav.top.scrolled {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 20px;
-  height: 74px;
+  height: auto;
+  min-height: 64px;
   position: relative;
 }
 
@@ -3597,7 +3611,12 @@ nav.top.scrolled {
   margin-left: 4px;
 }
 
-.nav-dropdown:hover .dropdown-toggle .chevron,
+@media (hover: hover) and (pointer: fine) {
+  .nav-dropdown:hover .dropdown-toggle .chevron {
+    transform: rotate(180deg);
+  }
+}
+
 .nav-dropdown.active .dropdown-toggle .chevron {
   transform: rotate(180deg);
 }
@@ -3723,9 +3742,11 @@ nav.top.scrolled {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 16px;
-    min-height: 64px;
-    height: 64px;
+    padding: 8px 16px;
+    /* Mobile header height used to align the mobile menu exactly below the bar */
+    --nav-header-height: 64px;
+    min-height: var(--nav-header-height);
+    height: var(--nav-header-height);
     gap: 10px;
   }
 
@@ -3735,7 +3756,7 @@ nav.top.scrolled {
   }
 
   .logo img {
-    height: clamp(32px, 7vw, 40px) !important;
+    height: clamp(36px, 6vw, 42px) !important;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -3768,6 +3789,13 @@ nav.top.scrolled {
     justify-content: center;
   }
 
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
   .mobile-menu-toggle {
     display: inline-flex;
     align-items: center;
@@ -3776,15 +3804,68 @@ nav.top.scrolled {
     height: 44px;
     min-width: 44px;
     padding: 0;
-    margin-left: auto;
+    margin-left: 0;
     border-radius: 999px;
     z-index: 1100;
+  }
+
+  .mobile-search-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    padding: 0;
+    border: 1px solid var(--paper-line);
+    border-radius: 999px;
+    background: var(--paper-warm);
+    color: var(--ink);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .mobile-search-toggle:hover {
+    background: rgba(250, 247, 242, 1);
+  }
+
+  .logo {
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+  }
+
+  .mobile-search-field {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    order: 4;
+    flex-basis: 100%;
+  }
+
+  .mobile-search-input {
+    display: block !important;
+    width: 100%;
+    height: 44px;
+    border: 1px solid var(--paper-line);
+    border-radius: 999px;
+    padding: 0 14px;
+    background: var(--white);
+    color: var(--ink);
+  }
+
+  .mobile-search-input:focus {
+    outline: none;
+    border-color: var(--signal);
+    box-shadow: 0 0 0 3px rgba(248, 164, 60, 0.15);
   }
 
   .nav-items {
     display: flex;
     position: fixed;
-    top: 64px;
+    /* Align the mobile menu top to the mobile header height variable so it sits flush under the bar */
+    top: var(--nav-header-height, 64px);
     left: 0;
     right: 0;
     bottom: 0;
@@ -3792,9 +3873,11 @@ nav.top.scrolled {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--paper-line);
-    padding: 18px 16px 24px;
+    /* Reduce top padding so the first item starts close to the header */
+    padding: 8px 16px 16px; /* top/right/left/bottom */
     flex-direction: column;
     align-items: stretch;
+    justify-content: flex-start; /* ensure items stack from the top */
     gap: 8px;
     z-index: 1050;
     opacity: 0;
@@ -3815,6 +3898,27 @@ nav.top.scrolled {
     width: 100%;
   }
 
+  /* MOBILE-ONLY: ensure plain nav links (Dental/Medical) align left on mobile */
+  .nav-plain-link {
+    text-align: left;
+    display: block;
+  }
+
+  /* MOBILE-ONLY: when mobile menu is open, hide the right-hand enterprise/cta area
+     to prevent it from leaking into the mobile panel. This uses the class added
+     to `nav-inner` from JS: `nav-inner mobile-open`. */
+  .nav-inner.mobile-open .nav-right {
+    display: none;
+  }
+
+  /* MOBILE-ONLY: Hide Enterprise link and Consultation CTA entirely on mobile
+     (do not render these controls on phone view). */
+  .nav-enterprise-link,
+  .nav-menu-footer,
+  .nav-cta {
+    display: none !important;
+  }
+
   .dropdown-toggle {
     font-size: 15px;
     padding: 12px 0;
@@ -3830,6 +3934,13 @@ nav.top.scrolled {
     width: 100%;
     padding: 12px 0;
     border-bottom: 1px solid var(--paper-line);
+  }
+
+  /* Remove any top margin from the first child inside the mobile menu so nothing
+     pushes the first item down (safety net for leftover margins). */
+  .nav-items > *:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 
   .dropdown-menu {
@@ -3999,6 +4110,14 @@ nav.top.scrolled {
 
 .btn-text:hover {
   color: var(--ink);
+}
+
+/* MOBILE OVERRIDE: ensure the contact row is hidden on mobile regardless of later declarations.
+   Placed at the end of the stylesheet so it cannot be overwritten by later rules. */
+@media (max-width: 768px) {
+  .nav-contact-top {
+    display: none !important;
+  }
 }
 
 .btn-lg {

@@ -74,7 +74,7 @@ export default function RootLayout({
         </Suspense>
         <ScrollToTop />
         <Navigation />
-        <main style={{ paddingTop: '80px', minHeight: '100vh' }}>
+        <main className="page-wrapper">
           {children}
           <ScrollAnimations />
           <ScrollEffects />
