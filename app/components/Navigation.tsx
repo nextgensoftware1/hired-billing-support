@@ -615,24 +615,18 @@ export default function Navigation() {
               onClick={(event) => event.stopPropagation()}
               onMouseDown={(event) => event.stopPropagation()}
             />
-            <div
-              className="mobile-search-results"
-              onClick={(event) => event.stopPropagation()}
-            >
-              {mobileSearchQuery.trim() ? (
-                mobileSearchResults.length > 0 ? (
-                  mobileSearchResults.map((item) => (
-                    <Link key={item.href} href={item.href} onClick={handleLinkClick}>
-                      {item.label}
-                    </Link>
-                  ))
-                ) : (
-                  <span className="mobile-search-empty">No matching pages found.</span>
-                )
-              ) : (
-                <span className="mobile-search-empty">Type to search Dental, Medical, Solutions, Company, and more.</span>
-              )}
-            </div>
+            {mobileSearchQuery.trim() && mobileSearchResults.length > 0 && (
+              <div
+                className="mobile-search-results"
+                onClick={(event) => event.stopPropagation()}
+              >
+                {mobileSearchResults.map((item) => (
+                  <Link key={item.href} href={item.href} onClick={handleLinkClick}>
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
