@@ -586,19 +586,21 @@ export default function Navigation() {
             <img src="/logo.png" alt="Hired Billing Support" style={{ height: '90px', width: 'auto', maxWidth: '100%', objectFit: 'contain' }} />
           </Link>
           {/* MOBILE-ONLY: add the new search trigger beside the hamburger in the mobile header. */}
-          <button
-            type="button"
-            className="mobile-search-toggle"
-            aria-label={searchOpen ? 'Close search' : 'Open search'}
-            aria-expanded={searchOpen}
-            onClick={(event) => toggleSearch(event)}
-          >
-            <Search size={18} />
-          </button>
+          {isMobileViewport && (
+            <button
+              type="button"
+              className="mobile-search-toggle"
+              aria-label={searchOpen ? 'Close search' : 'Open search'}
+              aria-expanded={searchOpen}
+              onClick={(event) => toggleSearch(event)}
+            >
+              <Search size={18} />
+            </button>
+          )}
         </div>
 
         {/* MOBILE-ONLY: render the lightweight search input below the mobile header when opened. */}
-        {searchOpen && (
+        {isMobileViewport && searchOpen && (
           <div
             className="mobile-search-field"
             onClick={(event) => event.stopPropagation()}
