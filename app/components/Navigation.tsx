@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { House, ChevronDown, Search } from "lucide-react";
 
@@ -91,6 +91,7 @@ export default function Navigation() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [mobileOpenSection, setMobileOpenSection] = useState<string | null>(null);
   const [mobileOpenSubsection, setMobileOpenSubsection] = useState<string | null>(null);
+  const [mobileSearchQuery, setMobileSearchQuery] = useState('');
   // MOBILE-ONLY: add a simple search toggle state for the mobile header.
   const [searchOpen, setSearchOpen] = useState(false);
   // MOBILE-ONLY: track viewport width so the mega-menu content can stay fully mounted on desktop but only render on mobile when explicitly active.
@@ -130,6 +131,7 @@ export default function Navigation() {
     setExpandedIndex(null);
     setMobileOpenSection(null);
     setMobileOpenSubsection(null);
+    setMobileSearchQuery('');
     setSearchOpen(false);
   }, [pathname]);
 
@@ -320,6 +322,39 @@ export default function Navigation() {
     },
   ];
 
+  const mobileSearchResults = useMemo(() => {
+    const normalizedQuery = mobileSearchQuery.trim().toLowerCase();
+
+    if (!normalizedQuery) {
+      return [];
+    }
+
+    const directPages = [
+      { label: 'Dental', href: '/dental' },
+      { label: 'Medical', href: '/medical' },
+      { label: 'Enterprise', href: '/enterprise' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'About Us', href: '/about' },
+    ];
+
+    const fromSections = mobileNavigationSections.flatMap((section) =>
+      section.groups.flatMap((group) =>
+        group.links.map((link) => ({
+          label: link.label,
+          href: link.href,
+        }))
+      )
+    );
+
+    return [...directPages, ...fromSections].filter((item) =>
+      item.label.toLowerCase().includes(normalizedQuery)
+    );
+  }, [mobileNavigationSections, mobileSearchQuery]);
+
+  const handleMobileSearchChange = (value: string) => {
+    setMobileSearchQuery(value);
+  };
+
   // Handle dropdown toggle
   const toggleDropdown = (dropdownName: string) => {
     const nextOpen = activeDropdown === dropdownName ? null : dropdownName;
@@ -380,8 +415,18 @@ export default function Navigation() {
   };
 
   // MOBILE-ONLY: add a simple mobile search toggle that sits beside the hamburger.
-  const toggleSearch = () => {
-    setSearchOpen((current) => !current);
+  const toggleSearch = (event?: React.MouseEvent<HTMLButtonElement>) => {
+    event?.stopPropagation();
+
+    setSearchOpen((current) => {
+      const nextOpen = !current;
+
+      if (!nextOpen) {
+        setMobileSearchQuery('');
+      }
+
+      return nextOpen;
+    });
   };
 
   const toggleMobileMenu = () => {
@@ -410,6 +455,7 @@ export default function Navigation() {
     setExpandedIndex(null);
     setMobileOpenSection(null);
     setMobileOpenSubsection(null);
+    setMobileSearchQuery('');
     setSearchOpen(false);
   };
 
@@ -417,6 +463,11 @@ export default function Navigation() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
+
+      if (target.closest('.mobile-search-toggle') || target.closest('.mobile-search-field')) {
+        return;
+      }
+
       if (!target.closest('.nav-dropdown')) {
         setActiveDropdown(null);
       }
@@ -540,8 +591,7 @@ export default function Navigation() {
             className="mobile-search-toggle"
             aria-label={searchOpen ? 'Close search' : 'Open search'}
             aria-expanded={searchOpen}
-            onClick={toggleSearch}
-            style={{ display: 'none' }}
+            onClick={(event) => toggleSearch(event)}
           >
             <Search size={18} />
           </button>
@@ -549,13 +599,38 @@ export default function Navigation() {
 
         {/* MOBILE-ONLY: render the lightweight search input below the mobile header when opened. */}
         {searchOpen && (
-          <div className="mobile-search-field" style={{ display: 'none' }}>
+          <div
+            className="mobile-search-field"
+            onClick={(event) => event.stopPropagation()}
+          >
             <input
               type="search"
               className="mobile-search-input"
-              placeholder="Search..."
+              placeholder="Search pages..."
               aria-label="Search"
+              value={mobileSearchQuery}
+              onChange={(event) => handleMobileSearchChange(event.target.value)}
+              onClick={(event) => event.stopPropagation()}
+              onMouseDown={(event) => event.stopPropagation()}
             />
+            <div
+              className="mobile-search-results"
+              onClick={(event) => event.stopPropagation()}
+            >
+              {mobileSearchQuery.trim() ? (
+                mobileSearchResults.length > 0 ? (
+                  mobileSearchResults.map((item) => (
+                    <Link key={item.href} href={item.href} onClick={handleLinkClick}>
+                      {item.label}
+                    </Link>
+                  ))
+                ) : (
+                  <span className="mobile-search-empty">No matching pages found.</span>
+                )
+              ) : (
+                <span className="mobile-search-empty">Type to search Dental, Medical, Solutions, Company, and more.</span>
+              )}
+            </div>
           </div>
         )}
 

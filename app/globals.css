@@ -3870,6 +3870,8 @@ nav.top.scrolled {
     color: var(--ink);
     cursor: pointer;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1202;
   }
 
   .mobile-search-toggle:hover {
@@ -3889,6 +3891,8 @@ nav.top.scrolled {
     margin-top: 8px;
     order: 4;
     flex-basis: 100%;
+    position: relative;
+    z-index: 1201;
   }
 
   .mobile-search-input {
@@ -3906,6 +3910,33 @@ nav.top.scrolled {
     outline: none;
     border-color: var(--signal);
     box-shadow: 0 0 0 3px rgba(248, 164, 60, 0.15);
+  }
+
+  .mobile-search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--paper-line);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    position: relative;
+    z-index: 1201;
+  }
+
+  .mobile-search-results a {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 0;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .mobile-search-empty {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
   }
 
   .nav-items {
