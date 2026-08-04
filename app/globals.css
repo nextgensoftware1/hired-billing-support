@@ -3946,16 +3946,17 @@ nav.top.scrolled {
     top: var(--nav-header-height, 64px);
     left: 0;
     right: 0;
-    bottom: 0;
+    height: auto;
+    max-height: calc(100vh - var(--nav-header-height, 64px));
+    min-height: 0;
     background: rgba(250, 247, 242, 0.98);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--paper-line);
-    /* Reduce top padding so the first item starts close to the header */
-    padding: 8px 16px 16px; /* top/right/left/bottom */
+    padding: 12px 18px 0;
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start; /* ensure items stack from the top */
+    justify-content: flex-start;
     gap: 8px;
     z-index: 1050;
     opacity: 0;
@@ -3980,6 +3981,8 @@ nav.top.scrolled {
   .nav-plain-link {
     text-align: left;
     display: block;
+    padding: 12px 12px;
+    margin: 0;
   }
 
   /* MOBILE-ONLY: when mobile menu is open, hide the right-hand enterprise/cta area
@@ -4013,8 +4016,9 @@ nav.top.scrolled {
     width: 100%;
     font-size: 15px;
     font-weight: 600;
-    padding: 12px 0;
+    padding: 12px 12px;
     border-bottom: 1px solid var(--paper-line);
+    box-sizing: border-box;
   }
 
   /* Remove any top margin from the first child inside the mobile menu so nothing
@@ -4034,7 +4038,7 @@ nav.top.scrolled {
     border: 0;
     border-radius: 0;
     margin-top: 0;
-    padding: 12px 0 8px;
+    padding: 12px 0 0;
     min-width: 100%;
     max-height: none;
     overflow: visible;
@@ -4097,7 +4101,8 @@ nav.top.scrolled {
   .mobile-direct-links a {
     font-size: 15px;
     font-weight: 600;
-    padding: 10px 0;
+    padding: 10px 12px;
+    box-sizing: border-box;
   }
 
   .dropdown-trust-badges {
@@ -4121,8 +4126,9 @@ nav.top.scrolled {
     display: inline-flex !important;
     width: 100%;
     justify-content: center;
-    margin-top: 6px;
-    padding: 14px 18px;
+    margin-top: 4px;
+    padding: 12px 16px;
+    box-sizing: border-box;
   }
 }
 
@@ -4132,8 +4138,8 @@ nav.top.scrolled {
   }
 
   .dropdown-toggle {
-    font-size: 12px;
-    padding: 5px 8px;
+    font-size: 15px;
+    padding: 12px 8px;
   }
 
   .dropdown-menu {
