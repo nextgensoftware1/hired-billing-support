@@ -89,6 +89,8 @@ export default function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [mobileOpenSection, setMobileOpenSection] = useState<string | null>(null);
+  const [mobileOpenSubsection, setMobileOpenSubsection] = useState<string | null>(null);
   // MOBILE-ONLY: add a simple search toggle state for the mobile header.
   const [searchOpen, setSearchOpen] = useState(false);
   // MOBILE-ONLY: track viewport width so the mega-menu content can stay fully mounted on desktop but only render on mobile when explicitly active.
@@ -126,6 +128,8 @@ export default function Navigation() {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
     setExpandedIndex(null);
+    setMobileOpenSection(null);
+    setMobileOpenSubsection(null);
     setSearchOpen(false);
   }, [pathname]);
 
@@ -187,16 +191,154 @@ export default function Navigation() {
     };
   }, []);
 
+  const mobileNavigationSections = [
+    {
+      key: 'solutions',
+      label: 'Solutions',
+      groups: [
+        {
+          id: 'billing-services',
+          title: 'Billing Services',
+          links: [
+            { label: 'Revenue Cycle Management', href: '/solutions/rcm-management' },
+            { label: 'Medical Billing & RCM', href: '/solutions/medical-billing-rcm' },
+            { label: 'AR Management', href: '/solutions/ar-management' },
+            { label: 'Denial Management & Fixation', href: '/solutions/ar-denial-fixation' },
+            { label: 'Old & Aging AR Recovery', href: '/solutions/old-aging-ar' },
+          ],
+        },
+        {
+          id: 'coding-compliance',
+          title: 'Coding & Compliance',
+          links: [
+            { label: 'Medical Coding', href: '/solutions/medical-coding' },
+            { label: 'Medical Auditing', href: '/solutions/medical-auditing' },
+            { label: 'Compliance & Reporting', href: '/solutions/compliance-reporting' },
+            { label: 'Quality Assurance', href: '/solutions/quality-assurance' },
+          ],
+        },
+        {
+          id: 'practice-management',
+          title: 'Practice Management',
+          links: [
+            { label: 'Provider Credential', href: '/solutions/provider-credential' },
+            { label: 'Payer & Insurer Enrollment', href: '/solutions/payer-insurer-enrollment' },
+            { label: 'Practice Launch', href: '/solutions/practice-launch' },
+            { label: 'Operations Management', href: '/solutions/operations-management' },
+          ],
+        },
+        {
+          id: 'advanced-solutions',
+          title: 'Advanced Solutions',
+          links: [
+            { label: 'Marketing & Patient Engagement', href: '/solutions/marketing-patient-engagement' },
+            { label: 'Virtual Healthcare Solutions', href: '/solutions/virtual-healthcare-solutions' },
+            { label: 'Analytics & Reporting', href: '/solutions/analytics-reporting' },
+          ],
+        },
+      ],
+    },
+    {
+      key: 'who-we-serve',
+      label: 'Who We Serve',
+      groups: [
+        {
+          id: 'provider-organizations',
+          title: 'Provider Organizations',
+          links: [
+            { label: 'Startups Practices', href: '/who-we-serve/start-ups' },
+            { label: 'Small Medical Practices', href: '/who-we-serve/small-medical-practices' },
+            { label: 'Medium & Large Medical Groups', href: '/who-we-serve/medium-large-medical-practices' },
+            { label: 'Enterprise Medical Operation', href: '/who-we-serve/enterprise-medical-operation' },
+            { label: 'Federally Qualified Health Centers', href: '/who-we-serve/fqhc' },
+            { label: 'Member Centric Care', href: '/who-we-serve/member-centric-care' },
+          ],
+        },
+        {
+          id: 'medical-specialties',
+          title: 'Medical Specialties',
+          links: [
+            { label: 'Psychiatry', href: '/who-we-serve/psychiatry' },
+            { label: 'Orthopedic', href: '/who-we-serve/orthopedic' },
+            { label: 'Cardiology', href: '/who-we-serve/cardiology' },
+            { label: 'Obgyn', href: '/who-we-serve/obgyn' },
+            { label: 'Endocrinology', href: '/who-we-serve/endocrinology' },
+            { label: 'Neurology', href: '/who-we-serve/neurology' },
+          ],
+        },
+        {
+          id: 'organizations-partners',
+          title: 'Organizations & Partners',
+          links: [
+            { label: 'Medical Payers', href: '/who-we-serve/payers' },
+            { label: 'Medical Order Transmission', href: '/who-we-serve/medical-order-transmission' },
+            { label: 'Marketing Partners', href: '/who-we-serve/hbs-marketing' },
+            { label: 'Developer', href: '/who-we-serve/developer-portal' },
+            { label: 'MSO / Payer Partners', href: '/who-we-serve/mso' },
+          ],
+        },
+      ],
+    },
+    {
+      key: 'resources',
+      label: 'Resources',
+      groups: [
+        {
+          id: 'calculator-and-cases',
+          title: 'Resources',
+          links: [
+            { label: 'Cost & ROI Calculator', href: '/CostROIcalculator' },
+            { label: 'Case Studies', href: '/case-study' },
+            { label: 'Blog', href: '/blog' },
+          ],
+        },
+      ],
+    },
+    {
+      key: 'company',
+      label: 'Company',
+      groups: [
+        {
+          id: 'about-company',
+          title: 'About',
+          links: [
+            { label: 'About Us', href: '/about' },
+            { label: 'Article 28 Facilities', href: '/article-28-facilities' },
+          ],
+        },
+        {
+          id: 'consultation-company',
+          title: 'Consultation',
+          links: [
+            { label: 'Explore Partnership', href: '/explore-partnership' },
+            { label: 'Find Service', href: '/find-service' },
+            { label: 'Contact', href: '/contact' },
+            { label: 'Privacy Policy', href: '/privacy-policy' },
+          ],
+        },
+      ],
+    },
+  ];
+
   // Handle dropdown toggle
   const toggleDropdown = (dropdownName: string) => {
+    const nextOpen = activeDropdown === dropdownName ? null : dropdownName;
+
     if (mobileMenuOpen) {
       setExpandedIndex(null);
       setSearchOpen(false);
-      setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+      setMobileOpenSection(nextOpen);
+      setMobileOpenSubsection(null);
+      setActiveDropdown(nextOpen);
       return;
     }
 
-    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+    setActiveDropdown(nextOpen);
+  };
+
+  const toggleMobileSubsection = (sectionKey: string, subsectionId: string) => {
+    const nextKey = `${sectionKey}-${subsectionId}`;
+    setMobileOpenSubsection((current) => (current === nextKey ? null : nextKey));
   };
 
   // MOBILE-ONLY: keep hover-driven dropdown behavior off touch/mobile devices.
@@ -248,6 +390,8 @@ export default function Navigation() {
       console.log('toggleMobileMenu', { current, next, expandedIndex });
       if (!next) {
         setExpandedIndex(null);
+        setMobileOpenSection(null);
+        setMobileOpenSubsection(null);
         setActiveDropdown(null);
         setSearchOpen(false);
       }
@@ -264,6 +408,8 @@ export default function Navigation() {
     setMobileMenuOpen(false);
     setActiveDropdown(null);
     setExpandedIndex(null);
+    setMobileOpenSection(null);
+    setMobileOpenSubsection(null);
     setSearchOpen(false);
   };
 
@@ -426,37 +572,68 @@ export default function Navigation() {
               <button className="dropdown-toggle nav-link" onClick={() => toggleDropdown('solutions')}>
                 Solutions <svg className="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
               </button>
-              {/* MOBILE-ONLY: render the mega-menu content only when the mobile menu is open and this section is active. */}
               {(isMobileViewport ? (mobileMenuOpen && activeDropdown === 'solutions') : true) && (
                 <div className={`dropdown-menu dropdown-grid-4 ${activeDropdown === 'solutions' ? 'active' : ''}`}>
-                  <div className="dropdown-column">
-                    <div className="column-header">BILLING SERVICES</div>
-                    <Link href="/solutions/rcm-management" onClick={handleLinkClick}>Revenue Cycle Management</Link>
-                    <Link href="/solutions/medical-billing-rcm" onClick={handleLinkClick}>Medical Billing & RCM</Link>
-                    <Link href="/solutions/ar-management" onClick={handleLinkClick}>AR Management</Link>
-                    <Link href="/solutions/ar-denial-fixation" onClick={handleLinkClick}>Denial Management & Fixation</Link>
-                    <Link href="/solutions/old-aging-ar" onClick={handleLinkClick}>Old & Aging AR Recovery</Link>
-                  </div>
-                  <div className="dropdown-column">
-                    <div className="column-header">CODING & COMPLIANCE</div>
-                    <Link href="/solutions/medical-coding" onClick={handleLinkClick}>Medical Coding</Link>
-                    <Link href="/solutions/medical-auditing" onClick={handleLinkClick}>Medical Auditing</Link>
-                    <Link href="/solutions/compliance-reporting" onClick={handleLinkClick}>Compliance & Reporting</Link>
-                    <Link href="/solutions/quality-assurance" onClick={handleLinkClick}>Quality Assurance</Link>
-                  </div>
-                  <div className="dropdown-column">
-                    <div className="column-header">PRACTICE MANAGEMENT</div>
-                    <Link href="/solutions/provider-credential" onClick={handleLinkClick}>Provider Credential</Link>
-                    <Link href="/solutions/payer-insurer-enrollment" onClick={handleLinkClick}>Payer & Insurer Enrollment</Link>
-                    <Link href="/solutions/practice-launch" onClick={handleLinkClick}>Practice Launch</Link>
-                    <Link href="/solutions/operations-management" onClick={handleLinkClick}>Operations Management</Link>
-                  </div>
-                  <div className="dropdown-column">
-                    <div className="column-header">ADVANCED SOLUTIONS</div>
-                    <Link href="/solutions/marketing-patient-engagement" onClick={handleLinkClick}>Marketing & Patient Engagement</Link>
-                    <Link href="/solutions/virtual-healthcare-solutions" onClick={handleLinkClick}>Virtual Healthcare Solutions</Link>
-                    <Link href="/solutions/analytics-reporting" onClick={handleLinkClick}>Analytics & Reporting</Link>
-                  </div>
+                  {isMobileViewport ? (
+                    <div className="mobile-accordion">
+                      {mobileNavigationSections.find((section) => section.key === 'solutions')?.groups.map((group) => {
+                        const subsectionKey = `solutions-${group.id}`;
+                        const isGroupOpen = mobileOpenSection === 'solutions' && mobileOpenSubsection === subsectionKey;
+
+                        return (
+                          <div key={group.id} className="mobile-accordion-group">
+                            <button
+                              type="button"
+                              className="mobile-accordion-trigger"
+                              onClick={() => toggleMobileSubsection('solutions', group.id)}
+                              aria-expanded={isGroupOpen}
+                            >
+                              <span>{group.title}</span>
+                              <ChevronDown size={16} />
+                            </button>
+                            <div className={`mobile-accordion-content${isGroupOpen ? ' open' : ''}`}>
+                              {group.links.map((link) => (
+                                <Link key={link.href} href={link.href} onClick={handleLinkClick}>
+                                  {link.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="dropdown-column">
+                        <div className="column-header">BILLING SERVICES</div>
+                        <Link href="/solutions/rcm-management" onClick={handleLinkClick}>Revenue Cycle Management</Link>
+                        <Link href="/solutions/medical-billing-rcm" onClick={handleLinkClick}>Medical Billing & RCM</Link>
+                        <Link href="/solutions/ar-management" onClick={handleLinkClick}>AR Management</Link>
+                        <Link href="/solutions/ar-denial-fixation" onClick={handleLinkClick}>Denial Management & Fixation</Link>
+                        <Link href="/solutions/old-aging-ar" onClick={handleLinkClick}>Old & Aging AR Recovery</Link>
+                      </div>
+                      <div className="dropdown-column">
+                        <div className="column-header">CODING & COMPLIANCE</div>
+                        <Link href="/solutions/medical-coding" onClick={handleLinkClick}>Medical Coding</Link>
+                        <Link href="/solutions/medical-auditing" onClick={handleLinkClick}>Medical Auditing</Link>
+                        <Link href="/solutions/compliance-reporting" onClick={handleLinkClick}>Compliance & Reporting</Link>
+                        <Link href="/solutions/quality-assurance" onClick={handleLinkClick}>Quality Assurance</Link>
+                      </div>
+                      <div className="dropdown-column">
+                        <div className="column-header">PRACTICE MANAGEMENT</div>
+                        <Link href="/solutions/provider-credential" onClick={handleLinkClick}>Provider Credential</Link>
+                        <Link href="/solutions/payer-insurer-enrollment" onClick={handleLinkClick}>Payer & Insurer Enrollment</Link>
+                        <Link href="/solutions/practice-launch" onClick={handleLinkClick}>Practice Launch</Link>
+                        <Link href="/solutions/operations-management" onClick={handleLinkClick}>Operations Management</Link>
+                      </div>
+                      <div className="dropdown-column">
+                        <div className="column-header">ADVANCED SOLUTIONS</div>
+                        <Link href="/solutions/marketing-patient-engagement" onClick={handleLinkClick}>Marketing & Patient Engagement</Link>
+                        <Link href="/solutions/virtual-healthcare-solutions" onClick={handleLinkClick}>Virtual Healthcare Solutions</Link>
+                        <Link href="/solutions/analytics-reporting" onClick={handleLinkClick}>Analytics & Reporting</Link>
+                      </div>
+                    </>
+                  )}
                   <TrustBadgesSection onClick={handleLinkClick} />
                 </div>
               )}
@@ -467,38 +644,68 @@ export default function Navigation() {
               <button className="dropdown-toggle nav-link" onClick={() => toggleDropdown('who-we-serve')}>
                 Who We Serve <svg className="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
               </button>
-              {/* MOBILE-ONLY: render the mega-menu content only when the mobile menu is open and this section is active. */}
               {(isMobileViewport ? (mobileMenuOpen && activeDropdown === 'who-we-serve') : true) && (
                 <div className={`dropdown-menu dropdown-grid-3 ${activeDropdown === 'who-we-serve' ? 'active' : ''}`}>
-                  <div className="dropdown-column">
-                    <div className="column-header">Provider Organizations</div>
-                    <Link href="/who-we-serve/start-ups" onClick={handleLinkClick}>Startups Practices</Link>
-                    <Link href="/who-we-serve/small-medical-practices" onClick={handleLinkClick}>Small Medical Practices</Link>
-                    <Link href="/who-we-serve/medium-large-medical-practices" onClick={handleLinkClick}>Medium & Large Medical Groups</Link>
-                    <Link href="/who-we-serve/enterprise-medical-operation" onClick={handleLinkClick}>Enterprise Medical Operation</Link>
-                    <Link href="/who-we-serve/fqhc" onClick={handleLinkClick}>Federally Qualified Health Centers</Link>
-                    <Link href="/who-we-serve/member-centric-care" onClick={handleLinkClick}>Member Centric Care</Link>
-                  </div>
-                  <div className="dropdown-column">
-                    <div className="column-header">Medical Specialties</div>
-                    <Link href="/who-we-serve/psychiatry" onClick={handleLinkClick}>Psychiatry</Link>
-                    <Link href="/who-we-serve/orthopedic" onClick={handleLinkClick}>Orthopedic</Link>
-                    <Link href="/who-we-serve/cardiology" onClick={handleLinkClick}>Cardiology</Link>
-                    <Link href="/who-we-serve/obgyn" onClick={handleLinkClick}>Obgyn</Link>
-                    <Link href="/who-we-serve/endocrinology" onClick={handleLinkClick}>Endocrinology</Link>
-                    <Link href="/who-we-serve/neurology" onClick={handleLinkClick}>Neurology</Link>
-                  </div>
-                  <div className="dropdown-column">
-                    <div className="column-header">Organizations & Partners</div>
-                    <Link href="/who-we-serve/payers" onClick={handleLinkClick}>Medical Payers</Link>
-                    <Link href="/who-we-serve/medical-order-transmission" onClick={handleLinkClick}>
-                      Medical Order Transmission
-                    </Link>
-                    <Link href="/who-we-serve/hbs-marketing" onClick={handleLinkClick}>Marketing Partners</Link>
-                    <Link href="/who-we-serve/developer-portal" onClick={handleLinkClick}>Developer</Link>
-                    {/* <Link href="/hire/enterprise" onClick={handleLinkClick}>Enterprise & Billing Specialists</Link> */}
-                    <Link href="/who-we-serve/mso" onClick={handleLinkClick}>MSO / Payer Partners</Link>
-                  </div>
+                  {isMobileViewport ? (
+                    <div className="mobile-accordion">
+                      {mobileNavigationSections.find((section) => section.key === 'who-we-serve')?.groups.map((group) => {
+                        const subsectionKey = `who-we-serve-${group.id}`;
+                        const isGroupOpen = mobileOpenSection === 'who-we-serve' && mobileOpenSubsection === subsectionKey;
+
+                        return (
+                          <div key={group.id} className="mobile-accordion-group">
+                            <button
+                              type="button"
+                              className="mobile-accordion-trigger"
+                              onClick={() => toggleMobileSubsection('who-we-serve', group.id)}
+                              aria-expanded={isGroupOpen}
+                            >
+                              <span>{group.title}</span>
+                              <ChevronDown size={16} />
+                            </button>
+                            <div className={`mobile-accordion-content${isGroupOpen ? ' open' : ''}`}>
+                              {group.links.map((link) => (
+                                <Link key={link.href} href={link.href} onClick={handleLinkClick}>
+                                  {link.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="dropdown-column">
+                        <div className="column-header">Provider Organizations</div>
+                        <Link href="/who-we-serve/start-ups" onClick={handleLinkClick}>Startups Practices</Link>
+                        <Link href="/who-we-serve/small-medical-practices" onClick={handleLinkClick}>Small Medical Practices</Link>
+                        <Link href="/who-we-serve/medium-large-medical-practices" onClick={handleLinkClick}>Medium & Large Medical Groups</Link>
+                        <Link href="/who-we-serve/enterprise-medical-operation" onClick={handleLinkClick}>Enterprise Medical Operation</Link>
+                        <Link href="/who-we-serve/fqhc" onClick={handleLinkClick}>Federally Qualified Health Centers</Link>
+                        <Link href="/who-we-serve/member-centric-care" onClick={handleLinkClick}>Member Centric Care</Link>
+                      </div>
+                      <div className="dropdown-column">
+                        <div className="column-header">Medical Specialties</div>
+                        <Link href="/who-we-serve/psychiatry" onClick={handleLinkClick}>Psychiatry</Link>
+                        <Link href="/who-we-serve/orthopedic" onClick={handleLinkClick}>Orthopedic</Link>
+                        <Link href="/who-we-serve/cardiology" onClick={handleLinkClick}>Cardiology</Link>
+                        <Link href="/who-we-serve/obgyn" onClick={handleLinkClick}>Obgyn</Link>
+                        <Link href="/who-we-serve/endocrinology" onClick={handleLinkClick}>Endocrinology</Link>
+                        <Link href="/who-we-serve/neurology" onClick={handleLinkClick}>Neurology</Link>
+                      </div>
+                      <div className="dropdown-column">
+                        <div className="column-header">Organizations & Partners</div>
+                        <Link href="/who-we-serve/payers" onClick={handleLinkClick}>Medical Payers</Link>
+                        <Link href="/who-we-serve/medical-order-transmission" onClick={handleLinkClick}>
+                          Medical Order Transmission
+                        </Link>
+                        <Link href="/who-we-serve/hbs-marketing" onClick={handleLinkClick}>Marketing Partners</Link>
+                        <Link href="/who-we-serve/developer-portal" onClick={handleLinkClick}>Developer</Link>
+                        <Link href="/who-we-serve/mso" onClick={handleLinkClick}>MSO / Payer Partners</Link>
+                      </div>
+                    </>
+                  )}
                   <TrustBadgesSection onClick={handleLinkClick} />
                 </div>
               )}
@@ -509,17 +716,31 @@ export default function Navigation() {
               <button className="dropdown-toggle nav-link" onClick={() => toggleDropdown('resources')}>
                 Resources <svg className="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
               </button>
-              {/* MOBILE-ONLY: render the mega-menu content only when the mobile menu is open and this section is active. */}
               {(isMobileViewport ? (mobileMenuOpen && activeDropdown === 'resources') : true) && (
                 <div className={`dropdown-menu dropdown-grid-2 ${activeDropdown === 'resources' ? 'active' : ''}`}>
-                  <div className="dropdown-column">
-                    <div className="column-header">Case Studies</div>
-                    <Link href="/case-study" onClick={handleLinkClick}>Case Studies</Link>
-                  </div>
-                  <div className="dropdown-column">
-                    <div className="column-header">Blog</div>
-                    <Link href="/blog" onClick={handleLinkClick}>Blog</Link>
-                  </div>
+                  {isMobileViewport ? (
+                    <div className="mobile-direct-links">
+                      {mobileNavigationSections
+                        .find((section) => section.key === 'resources')
+                        ?.groups.flatMap((group) => group.links)
+                        .map((link) => (
+                          <Link key={link.href} href={link.href} onClick={handleLinkClick}>
+                            {link.label}
+                          </Link>
+                        ))}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="dropdown-column">
+                        <div className="column-header">Case Studies</div>
+                        <Link href="/case-study" onClick={handleLinkClick}>Case Studies</Link>
+                      </div>
+                      <div className="dropdown-column">
+                        <div className="column-header">Blog</div>
+                        <Link href="/blog" onClick={handleLinkClick}>Blog</Link>
+                      </div>
+                    </>
+                  )}
                   <TrustBadgesSection onClick={handleLinkClick} />
                 </div>
               )}
@@ -530,23 +751,58 @@ export default function Navigation() {
               <button className="dropdown-toggle nav-link" onClick={() => toggleDropdown('company')}>
                 Company <svg className="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
               </button>
-              {/* MOBILE-ONLY: render the mega-menu content only when the mobile menu is open and this section is active. */}
               {(isMobileViewport ? (mobileMenuOpen && activeDropdown === 'company') : true) && (
                 <div className={`dropdown-menu dropdown-grid-2 ${activeDropdown === 'company' ? 'active' : ''}`}>
-                  <div className="dropdown-column">
-                    <div className="column-header">ABOUT</div>
-                    <Link href="/about" onClick={handleLinkClick}>About Us</Link>
-                    <Link href="/article-28-facilities" onClick={handleLinkClick}>Article 28 Facilities</Link>
-                  </div>
-                  <div className="dropdown-column">
-                    <div className="column-header">Consultation</div>
-                    <Link href="/explore-partnership" onClick={handleLinkClick}>Explore Partnership</Link>
-                    <Link href="/find-service" onClick={handleLinkClick}>Find Service</Link>
-                  </div>
+                  {isMobileViewport ? (
+                    <div className="mobile-direct-links">
+                      {mobileNavigationSections
+                        .find((section) => section.key === 'company')
+                        ?.groups.flatMap((group) => group.links)
+                        .map((link) => (
+                          <Link key={link.href} href={link.href} onClick={handleLinkClick}>
+                            {link.label}
+                          </Link>
+                        ))}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="dropdown-column">
+                        <div className="column-header">ABOUT</div>
+                        <Link href="/about" onClick={handleLinkClick}>About Us</Link>
+                        <Link href="/article-28-facilities" onClick={handleLinkClick}>Article 28 Facilities</Link>
+                      </div>
+                      <div className="dropdown-column">
+                        <div className="column-header">Consultation</div>
+                        <Link href="/explore-partnership" onClick={handleLinkClick}>Explore Partnership</Link>
+                        <Link href="/find-service" onClick={handleLinkClick}>Find Service</Link>
+                      </div>
+                    </>
+                  )}
                   <TrustBadgesSection onClick={handleLinkClick} />
                 </div>
               )}
             </div>
+
+            {isMobileViewport && (
+              <Link
+                href="/contact"
+                className="btn btn-primary mobile-menu-consultation"
+                onClick={handleLinkClick}
+              >
+                Consultation
+                <svg
+                  className="arrow"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </Link>
+            )}
           </div>
         </div>
 
