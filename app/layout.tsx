@@ -69,9 +69,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Suspense fallback={null}>
-          <CanonicalTags />
-        </Suspense>
+        <CanonicalTags />
         <ScrollToTop />
         <Navigation />
         <main className="page-wrapper">
