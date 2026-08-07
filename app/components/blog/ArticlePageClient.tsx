@@ -280,7 +280,7 @@ function buildSchema(article: BlogArticle, canonicalUrl: string) {
       publisher: {
         '@type': 'Organization',
         name: 'Hired Billing Support',
-        url: 'https://www.hiredbillingsupport.com',
+        url: 'https://hiredbillingsupport.com',
       },
       mainEntityOfPage: canonicalUrl,
       keywords: article.tags.join(', '),
@@ -289,8 +289,8 @@ function buildSchema(article: BlogArticle, canonicalUrl: string) {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.hiredbillingsupport.com/' },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.hiredbillingsupport.com/blog' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://hiredbillingsupport.com/' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://hiredbillingsupport.com/blog' },
         { '@type': 'ListItem', position: 3, name: article.title, item: canonicalUrl },
       ],
     },
@@ -298,14 +298,14 @@ function buildSchema(article: BlogArticle, canonicalUrl: string) {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Hired Billing Support',
-      url: 'https://www.hiredbillingsupport.com',
+      url: 'https://hiredbillingsupport.com',
       sameAs: ['https://www.facebook.com', 'https://www.linkedin.com'],
     },
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'Hired Billing Support',
-      url: 'https://www.hiredbillingsupport.com',
+      url: 'https://hiredbillingsupport.com',
     },
   ];
 
@@ -366,7 +366,7 @@ export default function ArticlePageClient({ article, relatedArticles, adjacentAr
     };
   }, [sections]);
 
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.hiredbillingsupport.com'}/blog/${article.slug}`;
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://hiredbillingsupport.com'}/blog/${article.slug}`;
   const schema = buildSchema(article, canonicalUrl);
   const brandLink = '/about';
   const keywordLink = '/services/medical-billing';

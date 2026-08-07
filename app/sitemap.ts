@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getSolutionSlugs, getSolutionUrl } from './data/solutions';
 import { getSolutionSlugs as getWhoWeServeSlugs, getWhoWeServeUrl } from './data/who-we-serve';
 
-const baseUrl = 'https://www.hiredbillingsupport.com';
+const baseUrl = 'https://hiredbillingsupport.com';
 
 type SitemapRoute = {
   url: string;

@@ -32,7 +32,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.hiredbillingsupport.com'),
+  metadataBase: new URL('https://hiredbillingsupport.com'),
   title: 'Pre-trained Remote Healthcare Teams | Fully Managed',
   description: 'Embedded healthcare billing, RCM, AR, credentialing, and operations support that helps practices reduce burden and protect revenue.',
   robots: {

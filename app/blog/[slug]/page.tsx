@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return {};
   }
 
-  const canonicalUrl = `https://www.hiredbillingsupport.com/blog/${article.slug}`;
+  const canonicalUrl = `https://hiredbillingsupport.com/blog/${article.slug}`;
 
   return {
     title: article.seoTitle || article.title,

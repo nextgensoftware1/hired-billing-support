@@ -16,7 +16,7 @@ import { qualityAssurance } from './quality-assurance';
 import { rcmManagement } from './rcm-management';
 import { virtualHealthcareSolutions } from './virtual-healthcare-solutions';
 
-export const siteBaseUrl = 'https://www.hiredbillingsupport.com';
+export const siteBaseUrl = 'https://hiredbillingsupport.com';
 
 export function getSolutionUrl(slug: string): string {
   return `${siteBaseUrl}/solutions/${slug}`;

@@ -401,7 +401,7 @@ For any service engagement involving PHI, HBS establishes appropriate written ag
     id: "contact",
     title: "Contact Hired Billing Support",
     content: `To contact Hired Billing Support:
-Website: https://www.hiredbillingsupport.com
+Website: https://hiredbillingsupport.com
 Email: hello@hiredbillingsupport.com
 Book a consultation: Visit /explore-partnership or /find-service on the website.
 HBS is available Monday through Friday during U.S. business hours.

@@ -8,7 +8,7 @@ export default function CanonicalTags() {
   const searchParams = useSearchParams();
 
   const canonicalHref = useMemo(() => {
-    const baseUrl = 'https://www.hiredbillingsupport.com';
+    const baseUrl = 'https://hiredbillingsupport.com';
     const path = pathname || '/';
     const query = searchParams?.toString();
 
