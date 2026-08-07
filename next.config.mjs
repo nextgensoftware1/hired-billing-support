@@ -28,11 +28,6 @@ const nextConfig = {
     // Legacy Solution URLs
     // ==========================================
     {
-      source: '/rcm-management',
-      destination: '/solutions/rcm-management',
-      permanent: true,
-    },
-    {
       source: '/medical-billing-rcm',
       destination: '/solutions/medical-billing-rcm',
       permanent: true,
@@ -88,11 +83,6 @@ const nextConfig = {
       permanent: true,
     },
     {
-      source: '/practice-launch',
-      destination: '/solutions/practice-launch',
-      permanent: true,
-    },
-    {
       source: '/operations-management',
       destination: '/solutions/operations-management',
       permanent: true,
@@ -116,11 +106,6 @@ const nextConfig = {
     // ==========================================
     // Legacy Who We Serve URLs
     // ==========================================
-    {
-      source: '/start-ups',
-      destination: '/who-we-serve/start-ups',
-      permanent: true,
-    },
     {
       source: '/small-medical-practices',
       destination: '/who-we-serve/small-medical-practices',
@@ -177,23 +162,8 @@ const nextConfig = {
       permanent: true,
     },
     {
-      source: '/payers',
-      destination: '/who-we-serve/payers',
-      permanent: true,
-    },
-    {
       source: '/medical-order-transmission',
       destination: '/who-we-serve/medical-order-transmission',
-      permanent: true,
-    },
-    {
-      source: '/hbs-marketing',
-      destination: '/who-we-serve/hbs-marketing',
-      permanent: true,
-    },
-    {
-      source: '/developer-portal',
-      destination: '/who-we-serve/developer-portal',
       permanent: true,
     },
     {
@@ -221,6 +191,43 @@ const nextConfig = {
     },
   ];
 },
+
+  async rewrites() {
+    return [
+      {
+        source: '/hbs-marketing',
+        destination: '/who-we-serve/hbs-marketing',
+      },
+      {
+        source: '/developer-portal',
+        destination: '/who-we-serve/developer-portal',
+      },
+      {
+        source: '/payers',
+        destination: '/who-we-serve/payers',
+      },
+      {
+        source: '/practice-launch',
+        destination: '/solutions/practice-launch',
+      },
+      {
+        source: '/start-ups',
+        destination: '/who-we-serve/start-ups',
+      },
+      {
+        source: '/rcm-management',
+        destination: '/solutions/rcm-management',
+      },
+      {
+        source: '/article-28-facilities/',
+        destination: '/article-28-facilities',
+      },
+      {
+        source: '/article-28-facilities',
+        destination: '/article-28-facilities',
+      },
+    ];
+  },
 
   async headers() {
     return [
