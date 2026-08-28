@@ -111,6 +111,25 @@ export default function Footer() {
              
             </ul>
           </div>
+
+          {/* Contact */}
+          <div className="footer-col">
+            <h6>Contact</h6>
+            <ul className="footer-contact-list">
+              <li>
+                <strong>Customer Support</strong>
+                <a href="tel:+16072601528">+1 607 260 1528</a>
+              </li>
+              <li>
+                <strong>Sales</strong>
+                <a href="tel:+16072922092">+1 607 292 2092</a>
+              </li>
+              <li>
+                <strong>Billing</strong>
+                <a href="tel:+16073276171">+1 607 327 6171</a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom Bar */}

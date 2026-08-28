@@ -670,7 +670,7 @@ export default function ContactPage() {
                 <div className="form-grid-2">
                   <div className="form-group">
                     <label>Phone Number<em>*</em></label>
-                    <input type="tel" name="phone" placeholder="e.g. +1 (321) 321-1740" value={formData.phone} onChange={handleChange} />
+                    <input type="tel" name="phone" placeholder="e.g. +1 (607) 260-1528" value={formData.phone} onChange={handleChange} />
                   </div>
                   <div className="form-group">
                     <label>I'm Interested In <em>*</em></label>
@@ -730,7 +730,7 @@ export default function ContactPage() {
                 </div>
                 <div className="info-text">
                   <strong>Phone</strong>
-                  <a href="tel:+13213211740">+1 (321) 321-1740</a>
+                  <a href="tel:+16072601528">+1 (607) 260-1528</a>
                 </div>
               </div>
 
