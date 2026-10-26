@@ -51,7 +51,7 @@ export default function PrivacyPolicyPage() {
           --paper:#FAF7F2; --paper-warm:#F2EDE3; --paper-line:#E8E2D5;
           --white:#FFFFFF;
           --signal:#00C896; --signal-deep:#00876B; --signal-pale:rgba(0,200,150,.08);
-          --amber:#F59E0B; --amber-deep:#B45309;
+          --amber:#F59E0B; --amber-deep: #92400E;
           --danger:#D64545;
           --radius:4px; --radius-lg:12px;
           --max:1280px; --gutter:clamp(20px,4vw,48px);
@@ -75,7 +75,7 @@ export default function PrivacyPolicyPage() {
         /* Typography */
         .eyebrow { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .18em; color: var(--ink-mute); display: inline-flex; align-items: center; gap: 10px; }
         .eyebrow::before { content: ''; width: 24px; height: 1px; background: currentColor; }
-        .eyebrow--light { color: rgba(250,247,242,.5); }
+        .eyebrow--light { color: rgba(250,247,242, 0.82); }
         .eyebrow--light::before { background: rgba(250,247,242,.4); }
 
     
@@ -85,8 +85,8 @@ export default function PrivacyPolicyPage() {
         /* Policy Hero */
         .policy-hero { background: var(--ink); padding: 120px 0 72px; margin-top: 40px; }
         .policy-hero-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 400; letter-spacing: -.025em; color: var(--paper); margin-bottom: 16px; font-variation-settings: "opsz" 144; line-height: 1.06; }
-        .policy-hero-sub { font-size: 15px; color: rgba(250,247,242,.55); margin-top: 10px; }
-        .policy-date { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(250,247,242,.35); margin-top: 16px; }
+        .policy-hero-sub { font-size: 15px; color: rgba(250,247,242, 0.82); margin-top: 10px; }
+        .policy-date { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(250,247,242, 0.82); margin-top: 16px; }
 
         /* Policy Layout */
         .policy-layout { max-width: var(--max); margin: 0 auto; padding: 80px var(--gutter); display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; background: var(--paper); }
@@ -117,15 +117,15 @@ export default function PrivacyPolicyPage() {
 
         /* Contact Card */}
         .policy-contact-card { background: var(--ink); border-radius: var(--radius-lg); padding: 32px; margin-top: 48px; }
-        .policy-contact-label { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(250,247,242,.4); margin-bottom: 12px; }
+        .policy-contact-label { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(250,247,242, 0.82); margin-bottom: 12px; }
         .policy-contact-card h4 { font-family: var(--serif); font-size: 1.2rem; color: var(--paper); margin-bottom: 12px; font-weight: 400; }
-        .policy-contact-card p, .policy-contact-card a { font-size: 14px; color: rgba(250,247,242,.6); line-height: 1.7; }
+        .policy-contact-card p, .policy-contact-card a { font-size: 14px; color: rgba(250,247,242, 0.82); line-height: 1.7; }
         .policy-contact-card a { color: var(--signal); font-weight: 500; }
 
         /* Footer */
-        footer { background: var(--ink); color: rgba(250,247,242,.6); padding: 40px 0 28px; border-top: 1px solid rgba(255,255,255,.06); }
+        footer { background: var(--ink); color: rgba(250,247,242, 0.82); padding: 40px 0 28px; border-top: 1px solid rgba(255,255,255,.06); }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; font-size: 13px; }
-        .footer-inner a { color: rgba(250,247,242,.6); }
+        .footer-inner a { color: rgba(250,247,242, 0.82); }
         .footer-inner a:hover { color: var(--signal); }
         .footer-legal { display: flex; gap: 24px; }
 
@@ -154,10 +154,10 @@ export default function PrivacyPolicyPage() {
               alignItems: 'center',
               gap: '8px',
               fontFamily: 'var(--mono)',
-              fontSize: '10px',
+              fontSize: '13px',
               textTransform: 'uppercase',
               letterSpacing: '.16em',
-              color: 'var(--signal-deep)',
+              color: '#00C896',
               background: 'rgba(0,200,150,.08)',
               border: '1px solid rgba(0,200,150,.2)',
               padding: '6px 14px',

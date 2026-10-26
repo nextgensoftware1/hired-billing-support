@@ -30,7 +30,7 @@ export default function HeroMarketplacePartners({ solution }: HeroProps) {
       font-size: 9px;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: rgba(250, 247, 242, .38);
+      color: rgba(250, 247, 242, 0.82);
       margin-bottom: 12px;
     }
 
@@ -51,7 +51,7 @@ export default function HeroMarketplacePartners({ solution }: HeroProps) {
 
     .cp-unit {
       font-size: 11px;
-      color: rgba(250, 247, 242, .45);
+      color: rgba(250, 247, 242, 0.82);
       padding-bottom: 4px;
       margin-left: 4px;
     }
@@ -80,7 +80,7 @@ export default function HeroMarketplacePartners({ solution }: HeroProps) {
     .cp-header-sub {
       font-family: 'JetBrains Mono', monospace;
       font-size: 9px;
-      color: rgba(250, 247, 242, .35);
+      color: rgba(250, 247, 242, 0.82);
       letter-spacing: .08em;
       margin-top: 6px;
     }
@@ -115,7 +115,7 @@ export default function HeroMarketplacePartners({ solution }: HeroProps) {
       font-size: 8px;
       text-transform: uppercase;
       letter-spacing: .12em;
-      color: rgba(250, 247, 242, .32);
+      color: rgba(250, 247, 242, 0.82);
       margin-bottom: 5px;
     }
 
@@ -213,7 +213,7 @@ export default function HeroMarketplacePartners({ solution }: HeroProps) {
 
     .badge-ok {
       background: rgba(0, 200, 150, .1);
-      color: #00876B;
+      color: #006B55;
     }
 
     .badge-warn {
@@ -249,7 +249,7 @@ export default function HeroMarketplacePartners({ solution }: HeroProps) {
     .cp-footer-right {
       font-family: 'JetBrains Mono', monospace;
       font-size: 9px;
-      color: rgba(250, 247, 242, .3);
+      color: rgba(250, 247, 242, 0.82);
       letter-spacing: .08em;
     }
 

@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { Suspense } from 'react';
-import { Fraunces, Inter_Tight, JetBrains_Mono } from 'next/font/google';
+import { Fraunces, Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import ScrollAnimations from './components/ScrollAnimations';
@@ -10,12 +10,21 @@ import ScrollEffects from "./components/ScrollEffects";
 import ScrollToTop from './components/ScrollToTop';
 import CanonicalTags from './components/CanonicalTags';
 import './globals.css';
+import './accessibility.css'; // readability layer — must stay after globals.css
 import HBSChatbot from "./components/HBSChatbot";
 
 // Load fonts with display: 'swap' to prevent FOIT
 const fraunces = Fraunces({
   subsets: ['latin'],
+  axes: ['opsz'],
   variable: '--font-fraunces',
+  display: 'swap',
+});
+
+// Inter: wider letters, easier for older / low-vision readers (body text)
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -55,7 +64,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${interTight.variable} ${jetBrainsMono.variable}`}
+      className={`${fraunces.variable} ${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}
     >
       <head>
         <meta name="google-site-verification" content="-KfvcGQaWPa3VY7i83rcCBUx_ogHYgtOfugsaaaQpRA" />

@@ -183,7 +183,7 @@ export default function enterprise() {
   <section className="final-cta" id="cta">
     <div className="final-cta-glow" />
     <div className="cta-inner">
-      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242,.55)'}}>Let's plan capacity</div>
+      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242, 0.82)'}}>Let's plan capacity</div>
       <h2 className="display">Tell us the volume. <em>We'll show you the model.</em></h2>
       <p>Current volume, projected growth, top three bottlenecks. We'll come back with a capacity model and integration plan — typically within 7 business days.</p>
       <div className="actions">

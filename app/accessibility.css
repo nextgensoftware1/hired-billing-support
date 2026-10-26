@@ -1,0 +1,923 @@
+/* =====================================================================
+   accessibility.css — readability layer for older / low-vision visitors
+   Hired Billing Support
+
+   Import this AFTER globals.css in app/layout.tsx. It does not change
+   the layout or design, only makes text bigger, darker and calmer.
+   Every rule uses "html body" in front so it wins over the older rules
+   in globals.css and in the <style> blocks inside each page.
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. COLOURS — darker greys and greens so light text becomes readable
+   (html:root wins over the :root blocks that 11 page files repeat)
+   ------------------------------------------------------------------ */
+html:root {
+  --ink-mute: #334155;      /* was #475569 → contrast 9.7:1 (was 7.1)  */
+  --signal-deep: #006B55;   /* was #00876B → contrast 6.1:1 (was 4.2)  */
+  --paper-line: #D9D1C1;    /* card borders a bit more visible           */
+  --amber-deep: #92400E;    /* amber text on light: 7:1 (was 4.7:1)       */
+
+  /* Fonts: use the fonts Next.js actually downloads (see layout.tsx).
+     Body text uses Inter (wider letters, easier to read than Inter Tight). */
+  --serif: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  --sans:  var(--font-inter), var(--font-inter-tight), -apple-system, 'Segoe UI', Arial, sans-serif;
+  --mono:  var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+/* Hard-coded light greys on light backgrounds → dark grey */
+html body .column-header,
+html body .ey,
+html body .hero p.lede,
+html body .logo-item .l-primary,
+html body .logo-item .l-primary--serif,
+html body .logo-item .l-primary--spaced,
+html body .review-card p,
+html body .stat-label,
+html body .stat-subtext {
+  color: #334155;
+}
+
+/* Faded white text on the dark navy sections (was 30–60% opacity,
+   contrast as low as 2.6:1) is now raised to 82% directly in globals.css
+   and in each page file, so it only changes where the background is dark. */
+
+/* NOTE: bright mint green (#00C896) is only 2:1 on cream. It is fine on
+   the dark navy sections. If you see mint text on a light section, change
+   that rule to color: var(--signal-deep). */
+
+
+/* ---------------------------------------------------------------------
+   2. BASE TEXT — bigger body copy, more line spacing
+   ------------------------------------------------------------------ */
+html body {
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html body main p,
+html body main li {
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+}
+
+/* Keep lines from getting too long to follow */
+html body main p {
+  max-width: 72ch;
+}
+
+
+/* ---------------------------------------------------------------------
+   3. PARAGRAPHS IN CARDS — were 12–14px, now 16px minimum
+   ------------------------------------------------------------------ */
+html body .ai-item p,
+html body .ai-li p,
+html body .ai-row p,
+html body .alert-callout-text,
+html body .audience-card p,
+html body .badge p,
+html body .bento-card p,
+html body .checklist-text,
+html body .denial-card p,
+html body .footer-brand p,
+html body .form-note,
+html body .glass-card p,
+html body .hc-note,
+html body .hero p.lede,
+html body .hero-stat-desc,
+html body .hero-stat-desc strong,
+html body .highlight-box p,
+html body .how-card p,
+html body .how-step p,
+html body .info-card p,
+html body .journey-text,
+html body .manifesto-stat p,
+html body .outcome-card p,
+html body .outcome-tile p,
+html body .pain-card p,
+html body .pain-item p,
+html body .pain-row .pdesc,
+html body .pathway-card p,
+html body .policy-contact-card p,
+html body .policy-legal-note p,
+html body .policy-list li,
+html body .policy-notice p,
+html body .process-item p,
+html body .process-step p,
+html body .promise-item p,
+html body .related-card-body p,
+html body .result-text,
+html body .sb-content p,
+html body .serve-tile p,
+html body .service-card p,
+html body .service-cell p,
+html body .service-fit-card p,
+html body .service-item p,
+html body .smc-desc,
+html body .stat-block .desc,
+html body .stat-subtext,
+html body .step p,
+html body .svc-card p,
+html body .svc-item p,
+html body .uc-card-right p,
+html body .who-item p,
+html body .why-sidebar p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+
+/* ---------------------------------------------------------------------
+   4. LABELS, EYEBROWS, TAGS, NUMBERS — were 8–11px, now 13px minimum.
+   Wide letter-spacing on tiny uppercase text is hard to read, so it is
+   reduced; the label stays about the same width.
+   ------------------------------------------------------------------ */
+html body .adjacent-card span,
+html body .ai-col-label,
+html body .ai-panel-label,
+html body .alert-callout-label,
+html body .analytics-hero-card h4,
+html body .approach-num,
+html body .article-badge,
+html body .article-breadcrumb,
+html body .article-toc-title,
+html body .author-row,
+html body .bento-card .outcome,
+html body .bento-tag,
+html body .calcEyebrow,
+html body .calcHeaderBadge,
+html body .card-footer,
+html body .card-footer .val,
+html body .card-mono-label,
+html body .card-tag,
+html body .cfLabel,
+html body .check-label,
+html body .ck,
+html body .ck-label,
+html body .compare-header span,
+html body .compare-row-old.head .col,
+html body .consultation-hero-badge,
+html body .cp-footer-pill,
+html body .cp-footer-right,
+html body .cp-header-label,
+html body .cp-header-sub,
+html body .cp-m-label,
+html body .cp-q-badge,
+html body .cp-q-lbl,
+html body .cp-queue-title,
+html body .cp-trend,
+html body .cp-unit,
+html body .dc-sub,
+html body .denial-card-tag,
+html body .denial-val,
+html body .ent-badge,
+html body .ent-cta .trust,
+html body .ey,
+html body .eyebrow,
+html body .footer-col h6,
+html body .form-group label,
+html body .hc-badge,
+html body .hc-lead-alert,
+html body .hc-online,
+html body .hc-qr-btn,
+html body .hero-eyebrow,
+html body .hero-label,
+html body .hero-meta-item .lbl,
+html body .hero-meta-item .num span,
+html body .hero-right-label,
+html body .hero-scroll-cue,
+html body .how-card .num,
+html body .how-label,
+html body .how-step-num,
+html body .impact-label,
+html body .inbox-row .cnt,
+html body .info-card-label,
+html body .info-text strong,
+html body .journey-tag,
+html body .logo-strip-label,
+html body .manifesto-kicker,
+html body .marketing-engagement-hero-card h4,
+html body .mcLabel,
+html body .mcLabelDark,
+html body .mcSave,
+html body .meta-label,
+html body .meta-row,
+html body .ops-management-hero-card h4,
+html body .org-dash-title,
+html body .pain-row .pn,
+html body .panelLabel,
+html body .pathway-card-tag,
+html body .payer-enroll-hero-card h4,
+html body .policy-contact-label,
+html body .policy-date,
+html body .policy-notice-label,
+html body .policy-toc-title,
+html body .post-meta,
+html body .practice-launch-hero-card h4,
+html body .process-num,
+html body .process-step-num,
+html body .promise-item-num,
+html body .promise-kicker,
+html body .provider-cred-hero-card h4,
+html body .provider-credential,
+html body .rcm-dot,
+html body .related-card-body span,
+html body .related-label,
+html body .rn,
+html body .s-pill,
+html body .s-val,
+html body .serve-tile.featured .serve-link,
+html body .serve-top-left .serve-label,
+html body .service-card-tag,
+html body .service-fit-card-num,
+html body .service-num,
+html body .services-bar-label,
+html body .sh-eyebrow,
+html body .smc-if,
+html body .stat-cell .k,
+html body .stat-label,
+html body .status-pill,
+html body .status-value,
+html body .step .num,
+html body .tag,
+html body .trust-footnote,
+html body .trust-item,
+html body .trust-label,
+html body .trust-line,
+html body .uc-card-tag,
+html body .virtual-healthcare-hero-card h4,
+html body .who-hero-badge,
+html body .who-tag,
+html body .why-sidebar-label,
+html body .workflow-points .num {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+
+/* ---------------------------------------------------------------------
+   5. DASHBOARD MOCKUP PICTURES (decoration inside hero cards).
+   Raised gently to 11px so the mock dashboards do not break.
+   ------------------------------------------------------------------ */
+html body .activity-feed-title,
+html body .ar-card-row .ar-lbl,
+html body .ar-card-row .ar-val,
+html body .bar-row .lbl,
+html body .cc-bar-right,
+html body .cc-bar-title,
+html body .cc-cell-label,
+html body .cc-rlabel,
+html body .cc-rval,
+html body .cc-unit,
+html body .code-comment,
+html body .code-key,
+html body .code-str,
+html body .code-val,
+html body .column-header,
+html body .dash-cl,
+html body .dash-footer-pill,
+html body .dash-footer-right,
+html body .dash-ft,
+html body .dash-hdr,
+html body .dash-header-label,
+html body .dash-header-sub,
+html body .dash-m-label,
+html body .dash-pill,
+html body .dash-q-badge,
+html body .dash-q-label,
+html body .dash-qb,
+html body .dash-qr,
+html body .dash-qt,
+html body .dash-queue-title,
+html body .dash-stat-label,
+html body .dash-sub,
+html body .dash-title,
+html body .dash-trend,
+html body .dash-unit,
+html body .dash-value,
+html body .denial-pill,
+html body .feed-row .feed-tag,
+html body .gap-callout .gc-lbl,
+html body .gap-callout-label,
+html body .gc-lbl,
+html body .hero-card h4,
+html body .hero-card-header .label,
+html body .kpi-lbl,
+html body .kpi-stat-label,
+html body .kpi-val,
+html body .ledger-row.head,
+html body .loc-name,
+html body .loc-pct,
+html body .logo-item .l-sub,
+html body .queue-head,
+html body .queue-row .qn,
+html body .rcm-node-label,
+html body .rcm-node-sub,
+html body .site-row,
+html body .site-row .sv,
+html body .site-tile .sn,
+html body .ticker-item,
+html body .ticker-line,
+html body .wd-layer .wl-tag,
+html body .wd-output .ot,
+html body .wf-dot,
+html body .wf-node-label,
+html body .wf-node-sub {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+
+/* ---------------------------------------------------------------------
+   6. MENU, BUTTONS, LINKS, FORMS
+   ------------------------------------------------------------------ */
+html body .nav-link,
+html body .dropdown-toggle,
+html body .dropdown-menu a {
+  font-size: 15px;
+}
+
+html body .btn,
+html body [class*="btn-"] {
+  font-size: 16px;
+  min-height: 48px;           /* easy to tap for shaky hands */
+}
+
+/* Links inside text are underlined so they don't rely on colour alone */
+html body main p a,
+html body main li a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+html body input,
+html body select,
+html body textarea {
+  font-size: 17px;            /* also stops iPhone zooming on focus */
+  color: var(--ink);
+}
+html body ::placeholder {
+  color: #5B6474;
+  opacity: 1;
+}
+html body .form-group label {
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Clear keyboard focus ring */
+html body :focus-visible {
+  outline: 3px solid #006B55;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* FAQ, footer */
+html body .footer-links a,
+html body .footer-inner a,
+html body .footer-col li,
+html body .footer-bottom {
+  font-size: 15px;
+}
+
+
+/* ---------------------------------------------------------------------
+   7. MOVING TEXT — stop the scrolling tickers for people who asked
+   their device for less motion (common with dizziness / vision issues)
+   ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html body *,
+  html body *::before,
+  html body *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Windows high-contrast mode: keep borders visible */
+@media (forced-colors: active) {
+  html body [class*="card"],
+  html body .btn {
+    border: 1px solid CanvasText;
+  }
+}
+
+
+/* ---------------------------------------------------------------------
+   8. MOBILE LAYOUT SAFETY — bigger text needs room on phones.
+   These two-column blocks were already too tight on phones (they
+   overflowed the screen a little before); now they stack in one column.
+   ------------------------------------------------------------------ */
+html body .ai-split {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 640px) {
+  html body .ai-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Long words (e.g. "Credentialing") never push a card wider than the screen */
+html body main h1,
+html body main h2,
+html body main h3,
+html body main h4,
+html body main p {
+  overflow-wrap: break-word;
+}
+
+/* Long buttons wrap on phones instead of going off screen */
+@media (max-width: 640px) {
+  html body .btn,
+  html body [class*="btn-"] {
+    white-space: normal;
+    max-width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+
+/* ---------------------------------------------------------------------
+   9. TARGETED CONTRAST FIXES found by testing every page
+   ------------------------------------------------------------------ */
+/* --amber was used but never defined (made "70%" invisible on /enterprise) */
+html:root { --amber: #F59E0B; }
+html body .kpi-stat-num.amb { color: #F59E0B; }
+
+/* Grey / green text sitting on dark navy */
+html body .final-cta em,
+html body .ent-cta h2 em { color: #00C896; }
+html body .status-value.waiting,
+html body .jtag-pending { color: #B4BFCD; }
+html body .jtag-active { color: #F59E0B; }
+html body .jtag-done,
+html body .article-badge { color: #00C896; }
+
+/* Invisible button on /article-28-facilities */
+html body .article-cta .btn-ghost {
+  color: #FAF7F2;
+  border-color: rgba(250, 247, 242, 0.6);
+}
+
+/* Mint green on cream → deep green */
+html body .stat-number { color: #006B55; }
+
+
+/* ---------------------------------------------------------------------
+   10. DARK SECTIONS — inside every navy / dark card, the "muted" grey
+   (used for the second, italic half of headings like "shows up") must be
+   LIGHT, not dark. The old value was nearly invisible on navy.
+   ------------------------------------------------------------------ */
+html body #workflow,
+html body .afterPanel,
+html body .ai-col-right,
+html body .approach-card.feature,
+html body .article-cta,
+html body .article-hero,
+html body .bento-card--dark,
+html body .block--ink,
+html body .block--ink-soft,
+html body .calcFooter,
+html body .calcHeader,
+html body .case-card,
+html body .compare-wrap,
+html body .consultation-section--ink,
+html body .consultation-section--ink-soft,
+html body .contact-hero,
+html body .cp-footer,
+html body .cp-header,
+html body .cta,
+html body .cta-section,
+html body .dash,
+html body .dash-footer,
+html body .dash-header,
+html body .ent-cta,
+html body .ent-s--dark,
+html body .ent-s--dark-flat,
+html body .final-cta,
+html body .hero-card,
+html body .hero-left,
+html body .how-section,
+html body .industry-section--ink,
+html body .industry-section--ink-soft,
+html body .kpi-strip,
+html body .organization-dashboard,
+html body .policy-contact-card,
+html body .policy-hero,
+html body .promise-section,
+html body .serve-tile.featured,
+html body .solution-card,
+html body .solution-compare-wrap,
+html body .stat-cell,
+html body .who-section--ink,
+html body .who-section--ink-soft,
+html body footer,
+html body section.block.dark,
+html body [style*="background:var(--ink)"],
+html body [style*="background:var(--ink-soft)"],
+html body [style*="background:#0A1628"] {
+  --ink-mute: #B4BFCD;      /* contrast 9.6:1 on navy (was 2.4:1) */
+  --amber-deep: #F59E0B;    /* amber notes readable on navy */
+  --signal-deep: #00C896;   /* green status text readable on navy */
+}
+
+
+/* ---------------------------------------------------------------------
+   11. "TRUSTED BY" LOGO STRIP (/dental, industry pages) — logos were
+   shown at 30% opacity, almost invisible. Now clearly readable but still
+   calm and grey so they don't compete with the content.
+   ------------------------------------------------------------------ */
+html body .logo-item { opacity: 1; }
+html body .logo-item:hover { opacity: 1; }
+html body .logo-item .l-primary,
+html body .logo-item .l-primary--serif,
+html body .logo-item .l-primary--spaced { color: #475569; }
+html body .logo-item .l-sub { color: #5B6474; font-size: 11px; }
+html body .logo-item .l-icon svg { fill: #64748B; }
+html body .logo-strip-label { color: #334155; }
+
+
+/* ---------------------------------------------------------------------
+   12. FIXES FROM THE SECOND FULL TEST (after scrolling every page so
+   the fade-in sections were visible)
+   ------------------------------------------------------------------ */
+/* Same class names are used on light AND dark backgrounds in different
+   pages — these rules put dark text back where the background is light */
+
+/* Small mint suffix in hero numbers ("98%", "$1.2M+") on cream */
+html body .hero-meta-item .num span {
+  color: var(--signal-deep) !important;   /* !important: it is an inline style */
+}
+
+/* Status colours inside dark dashboard pictures: green and amber that
+   were too dark for a navy background */
+html body .kpi-val.hi,
+html body .s-val.done,
+html body .s-pill.pill-g {
+  color: #00C896;
+}
+html body .kpi-val.mi,
+html body .s-val.pend {
+  color: #F59E0B;
+}
+
+/* Contact page HIPAA callout label */
+html body .alert-callout .alert-callout-label {
+  color: var(--signal-deep);
+  font-size: 12px;
+}
+
+/* "Start with a review…" labels above the final buttons (dark section) */
+html body .eyebrow.eyebrow--light,
+html body .eyebrow.eyebrow-light {
+  color: rgba(250, 247, 242, 0.82);
+}
+
+
+/* ---------------------------------------------------------------------
+   13. ITALIC WORDS IN HEADINGS ("shows up", "Humans do the judgment")
+   They used the thinnest weight (300) of the serif font, which looks like
+   hairlines on screen. Now normal weight, and on navy they use the brand
+   mint green so they are clearly visible (8.4 : 1).
+   ------------------------------------------------------------------ */
+html body :is(h1, h2, h3, h4, .display) em {
+  font-weight: 400;
+}
+
+html body #workflow :is(h1, h2, h3, h4, .display) em,
+html body .afterPanel :is(h1, h2, h3, h4, .display) em,
+html body .ai-col-right :is(h1, h2, h3, h4, .display) em,
+html body .approach-card.feature :is(h1, h2, h3, h4, .display) em,
+html body .article-cta :is(h1, h2, h3, h4, .display) em,
+html body .article-hero :is(h1, h2, h3, h4, .display) em,
+html body .bento-card--dark :is(h1, h2, h3, h4, .display) em,
+html body .block--ink :is(h1, h2, h3, h4, .display) em,
+html body .block--ink-soft :is(h1, h2, h3, h4, .display) em,
+html body .calcFooter :is(h1, h2, h3, h4, .display) em,
+html body .calcHeader :is(h1, h2, h3, h4, .display) em,
+html body .case-card :is(h1, h2, h3, h4, .display) em,
+html body .compare-wrap :is(h1, h2, h3, h4, .display) em,
+html body .consultation-section--ink :is(h1, h2, h3, h4, .display) em,
+html body .consultation-section--ink-soft :is(h1, h2, h3, h4, .display) em,
+html body .contact-hero :is(h1, h2, h3, h4, .display) em,
+html body .cp-footer :is(h1, h2, h3, h4, .display) em,
+html body .cp-header :is(h1, h2, h3, h4, .display) em,
+html body .cta :is(h1, h2, h3, h4, .display) em,
+html body .cta-section :is(h1, h2, h3, h4, .display) em,
+html body .dash :is(h1, h2, h3, h4, .display) em,
+html body .dash-footer :is(h1, h2, h3, h4, .display) em,
+html body .dash-header :is(h1, h2, h3, h4, .display) em,
+html body .ent-cta :is(h1, h2, h3, h4, .display) em,
+html body .ent-s--dark :is(h1, h2, h3, h4, .display) em,
+html body .ent-s--dark-flat :is(h1, h2, h3, h4, .display) em,
+html body .final-cta :is(h1, h2, h3, h4, .display) em,
+html body .hero-card :is(h1, h2, h3, h4, .display) em,
+html body .hero-left :is(h1, h2, h3, h4, .display) em,
+html body .how-section :is(h1, h2, h3, h4, .display) em,
+html body .industry-section--ink :is(h1, h2, h3, h4, .display) em,
+html body .industry-section--ink-soft :is(h1, h2, h3, h4, .display) em,
+html body .kpi-strip :is(h1, h2, h3, h4, .display) em,
+html body .organization-dashboard :is(h1, h2, h3, h4, .display) em,
+html body .policy-contact-card :is(h1, h2, h3, h4, .display) em,
+html body .policy-hero :is(h1, h2, h3, h4, .display) em,
+html body .promise-section :is(h1, h2, h3, h4, .display) em,
+html body .serve-tile.featured :is(h1, h2, h3, h4, .display) em,
+html body .solution-card :is(h1, h2, h3, h4, .display) em,
+html body .solution-compare-wrap :is(h1, h2, h3, h4, .display) em,
+html body .stat-cell :is(h1, h2, h3, h4, .display) em,
+html body .who-section--ink :is(h1, h2, h3, h4, .display) em,
+html body .who-section--ink-soft :is(h1, h2, h3, h4, .display) em,
+html body footer :is(h1, h2, h3, h4, .display) em,
+html body section.block.dark :is(h1, h2, h3, h4, .display) em,
+html body [style*="background:var(--ink)"] :is(h1, h2, h3, h4, .display) em,
+html body [style*="background:var(--ink-soft)"] :is(h1, h2, h3, h4, .display) em,
+html body [style*="background:#0A1628"] :is(h1, h2, h3, h4, .display) em {
+  color: #00C896;
+}
+
+/* Big step numbers (01, 02, 03) in the navy "How we integrate" cards */
+html body .glass-card .gc-num { color: #00C896; opacity: 1; }
+
+
+/* ---------------------------------------------------------------------
+   14. "TRUSTED BY" LOGO STRIP — every practice name the same weight.
+   Some names were bold and others thin (the serif ones), and some second
+   lines were lighter than others. Now all names and all second lines match.
+   ------------------------------------------------------------------ */
+html body .logo-item .l-primary,
+html body .logo-item .l-primary--serif,
+html body .logo-item .l-primary--spaced {
+  font-weight: 700;
+  color: #334155;
+}
+html body .logo-item .l-sub {
+  font-weight: 700;
+  color: #475569;
+  letter-spacing: 0.1em;
+}
+
+
+/* =====================================================================
+   15. SECURITY / COMPLIANCE CARDS — 2 × 2 grid, perfectly aligned
+   (HIPAA Compliant · SOC 2 Aligned · Encrypted End-to-End · Vetted Personnel)
+   - Always 2 columns, equal width; both cards in a row are the same height
+   - Icons, titles and text line up across each row (CSS subgrid), even if
+     one title wraps to two lines
+   - Text column gets the full card width (icon sits on top)
+   ===================================================================== */
+
+/* The section: give the cards half the width instead of ~44% */
+html body .compliance {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+}
+@media (max-width: 960px) {
+  html body .compliance {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* The 2 × 2 grid */
+html body .compliance-badges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 16px;
+  align-items: stretch;
+}
+
+/* One card = 3 rows (icon / title / text) that line up with its neighbour */
+html body .compliance-badges .badge {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  align-content: start;
+  justify-items: start;
+  gap: 0;
+  margin: 0;
+  padding: 22px 20px;
+  box-sizing: border-box;
+  height: 100%;
+  text-align: left;
+}
+
+/* Let the title and text become direct rows of the card */
+html body .compliance-badges .badge > div:not(.badge-icon) {
+  display: contents;
+}
+
+html body .compliance-badges .badge .badge-icon {
+  margin: 0 0 14px;
+}
+
+html body .compliance-badges .badge h5 {
+  margin: 0 0 6px;
+  font-size: clamp(16px, 1.3vw, 18px);
+  font-weight: 600;
+  line-height: 1.3;
+  align-self: end;              /* titles sit on the same baseline row */
+  text-wrap: balance;
+  hyphens: none;
+  overflow-wrap: normal;
+}
+
+html body .compliance-badges .badge p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  align-self: start;
+  hyphens: none;
+  overflow-wrap: normal;
+}
+
+/* Small phones: keep 2 × 2 but tighten spacing so text has room */
+@media (max-width: 480px) {
+  html body .compliance-badges {
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+  html body .compliance-badges .badge {
+    padding: 16px 14px;
+  }
+  html body .compliance-badges .badge h5 {
+    font-size: 15px;
+  }
+  html body .compliance-badges .badge p {
+    font-size: 14px;
+  }
+}
+
+
+/* =====================================================================
+   16. SERVICE CARD GRIDS — /dental "The full dental operations stack"
+       and /medical "The full operational stack"
+   Layout and typography only (no colours changed):
+   - one clear type scale inside every card
+   - justified body text with hyphenation, so lines end evenly
+   - each part of a card (tag, title, pain line, text, outcome) lines up
+     with the same part of the cards next to it (CSS subgrid)
+   ===================================================================== */
+
+/* ---------- /dental: 8 service cards ---------- */
+html body .service-grid {
+  grid-auto-rows: auto;
+  row-gap: 1px;
+}
+html body .service-grid .service-card {
+  display: grid;
+  grid-row: span 5;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  align-content: start;
+  padding: 30px 24px;
+}
+html body .service-grid .service-card-tag {
+  justify-self: start;
+  align-self: start;
+  margin-bottom: 14px;
+}
+html body .service-grid .service-card h4 {
+  font-size: 18px;
+  line-height: 1.3;
+  margin: 0 0 10px;
+  align-self: start;
+}
+html body .service-grid .service-card .pain {
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  margin: 0 0 14px;
+  align-self: start;
+}
+html body .service-grid .service-card p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-wrap: pretty;
+  align-self: start;
+}
+html body .service-grid .service-card .outcome {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 16px 0 0;
+  align-self: end;            /* outcomes sit on one line across the row */
+}
+
+/* ---------- /medical: 9 service cards ---------- */
+html body .svc-grid {
+  row-gap: 20px;
+}
+html body .svc-grid .svc-card {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  align-content: start;
+}
+html body .svc-grid .svc-card h4 {
+  margin: 0 0 12px;
+  align-self: start;
+}
+html body .svc-grid .svc-card p {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Phones: justified text in a narrow column leaves gaps, so read normally */
+@media (max-width: 600px) {
+  html body .service-grid .service-card p,
+  html body .svc-grid .svc-card p {
+    text-align: left;
+  }
+}
+
+
+/* =====================================================================
+   17. HERO CARD HEADER — /explore-partnership and /find-service only
+   ("4 partnership models available" / "12 service pathways available").
+   Scoped to .consultation-hero-visual, which only these two pages use.
+   Clean stacking: label → number + label → green pill → footer line.
+   No colours changed.
+   ===================================================================== */
+html body .consultation-hero-visual .cp-header {
+  padding: 24px 26px 22px;
+}
+html body .consultation-hero-visual .cp-header-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  margin-bottom: 14px;
+  text-wrap: balance;      /* two even lines instead of one lonely word */
+}
+html body .consultation-hero-visual .cp-main-row {
+  display: flex;
+  flex-direction: row;               /* pill sits in front of the number */
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+html body .consultation-hero-visual .cp-main-row > div {
+  align-items: center !important;    /* inline style used baseline */
+  gap: 10px !important;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+html body .consultation-hero-visual .cp-big {
+  font-size: 2.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+html body .consultation-hero-visual .cp-unit {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.35;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  text-wrap: balance;
+}
+html body .consultation-hero-visual .cp-trend {
+  flex-shrink: 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  padding: 6px 12px;
+  gap: 7px;
+  white-space: nowrap;               /* pill text always on one line */
+}
+html body .consultation-hero-visual .cp-trend-dot {
+  flex-shrink: 0;
+}
+html body .consultation-hero-visual .cp-header-sub {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  margin-top: 0;
+  text-wrap: balance;
+}

@@ -255,7 +255,7 @@ export default function BlogPage() {
           padding: 0 var(--gutter);
         }
         .hero-copy { max-width: 860px; }
-        .eyebrow-light { color: rgba(250, 247, 242, 0.6); }
+        .eyebrow-light { color: rgba(250, 247, 242, 0.82); }
         .display-light { color: var(--paper); font-size: clamp(42px, 5.6vw, 74px); max-width: 920px; margin-top: 18px; line-height: 0.95; }
         .hero-subtitle { font-size: 18px; line-height: 1.75; color: rgba(250, 247, 242, 0.82); max-width: 760px; margin-top: 24px; }
         .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
@@ -294,7 +294,7 @@ export default function BlogPage() {
         .featured-image { object-fit: cover; object-position: center; }
         .featured-content { display: flex; flex-direction: column; gap: 16px; }
         .meta-row, .post-meta, .author-row { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #475569; }
-        .badge { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 999px; background: rgba(0, 200, 150, 0.2); color: #00C896; border: 1px solid #00C896; }
+        .badge { display: inline-flex; align-items: center; padding: 6px 10px; font-size: 12px; border-radius: 999px; background: rgba(0, 200, 150, 0.2); color: #00C896; border: 1px solid #00C896; }
         .featured-content h2 { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; color: #FAF7F2; font-weight: 400; margin: 0; }
         .featured-content p, .post-card p { font-size: 15px; line-height: 1.7; color: rgba(250, 247, 242, 0.85); margin: 0; }
         .card-description {

@@ -21,7 +21,7 @@ const HeroPracticeLaunch = ({ solution }: HeroProps) => {
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: rgba(250, 247, 242, 0.5);
+      color: rgba(250, 247, 242, 0.82);
       margin-bottom: 20px;
       padding-bottom: 18px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -76,7 +76,7 @@ const HeroPracticeLaunch = ({ solution }: HeroProps) => {
     }
 
     .checklist-text.done {
-      color: rgba(250, 247, 242, 0.65);
+      color: rgba(250, 247, 242, 0.82);
       text-decoration: line-through;
     }
 
@@ -102,7 +102,7 @@ const HeroPracticeLaunch = ({ solution }: HeroProps) => {
     .dash-stat-num {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
-      color: #00876B;
+      color: #00C896;
       display: block;
       line-height: 1;
       margin-bottom: 4px;
@@ -111,7 +111,7 @@ const HeroPracticeLaunch = ({ solution }: HeroProps) => {
     .dash-stat-label {
       font-family: 'JetBrains Mono', monospace;
       font-size: 8px;
-      color: rgba(250, 247, 242, 0.5);
+      color: rgba(250, 247, 242, 0.82);
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }

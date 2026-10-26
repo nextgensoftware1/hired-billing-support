@@ -127,7 +127,7 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
       --signal-deep: #00876B;
       --signal-pale: rgba(0, 200, 150, 0.08);
       --amber: #F59E0B;
-      --amber-deep: #B45309;
+      --amber-deep: #92400E;
       --amber-pale: rgba(245, 158, 11, 0.08);
       --danger: #D64545;
       --danger-pale: rgba(214, 69, 69, 0.07);
@@ -181,7 +181,7 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
     }
 
     .eyebrow--light {
-      color: rgba(250, 247, 242, 0.5);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     .btn {
@@ -551,12 +551,12 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
 
     .who-section--ink .display em,
     .who-section--ink-soft .display em {
-      color: rgba(250, 247, 242, 0.5);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     .who-section--ink .eyebrow,
     .who-section--ink-soft .eyebrow {
-      color: rgba(250, 247, 242, 0.5);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     .who-section--ink .eyebrow::before,
@@ -566,7 +566,7 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
 
     .who-section--ink p,
     .who-section--ink-soft p {
-      color: rgba(250, 247, 242, 0.65);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     /* Section header */
@@ -606,12 +606,12 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
 
     .who-section--ink .section-title em,
     .who-section--ink-soft .section-title em {
-      color: rgba(250, 247, 242, 0.5);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     .who-section--ink .section-subtitle,
     .who-section--ink-soft .section-subtitle {
-      color: rgba(250, 247, 242, 0.6);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     /* Monologue */
@@ -864,7 +864,7 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
     }
 
     .who-section--ink .process-step p {
-      color: rgba(250, 247, 242, 0.6);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     .who-section--ink .process-step-num {
@@ -1164,13 +1164,13 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
     .cta-title em {
       font-style: italic;
       font-weight: 300;
-      color: rgba(250, 247, 242, 0.5);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     .cta-text {
       font-size: 16px;
       line-height: 1.75;
-      color: rgba(250, 247, 242, 0.6);
+      color: rgba(250, 247, 242, 0.82);
       margin-bottom: 40px;
     }
 
@@ -1187,13 +1187,13 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(250, 247, 242, 0.35);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     /* Footer */
     footer {
       background: var(--ink);
-      color: rgba(250, 247, 242, 0.6);
+      color: rgba(250, 247, 242, 0.82);
       padding: 60px 0 32px;
       border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -1208,7 +1208,7 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
     }
 
     .footer-inner a {
-      color: rgba(250, 247, 242, 0.6);
+      color: rgba(250, 247, 242, 0.82);
     }
 
     .footer-inner a:hover {
@@ -1401,7 +1401,7 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
                 return (
                   <div key={service.num} className="service-fit-card">
                     {service.category && (
-                      <span className="service-category" style={{ color: categoryColor, fontFamily: 'JetBrains Mono, monospace', fontSize: '9px', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: '12px', display: 'inline-block', fontWeight: 500 }}>
+                      <span className="service-category" style={{ color: categoryColor, fontFamily: 'JetBrains Mono, monospace', fontSize: '13px', letterSpacing: '0.16em', textTransform: 'uppercase', marginBottom: '12px', display: 'inline-block', fontWeight: 500 }}>
                         {service.category}
                       </span>
                     )}

@@ -608,13 +608,13 @@ export default function Home() {
                 },
                 {
                   icon: 'M12 1v6m0 6v6M7 12h10M3 12a9 9 0 1118 0 9 9 0 01-18 0z',
-                  title: 'Encrypted End-to-End',
-                  desc: 'At rest, in transit, in storage. AES-256.'
+                  title: 'Encrypted End‑to‑End',
+                  desc: 'At rest, in transit, in storage. AES‑256.'
                 },
                 {
                   icon: 'M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M20 8v6M23 11h-6M8.5 7a4 4 0 100-8 4 4 0 000 8z',
                   title: 'Vetted Personnel',
-                  desc: 'Background-checked. BAA-bound. Continuously audited.'
+                  desc: 'Background‑checked. BAA‑bound. Continuously audited.'
                 }
               ].map((badge, idx) => (
                 <div key={idx} className="badge">
@@ -688,7 +688,7 @@ export default function Home() {
       <section className="final-cta" id="cta">
         <div className="final-cta-glow"></div>
         <div className="cta-inner">
-          <div className="eyebrow" style={{ justifyContent: 'center', color: 'rgba(250,247,242,0.55)' }}>Let's talk</div>
+          <div className="eyebrow" style={{ justifyContent: 'center', color: 'rgba(250,247,242, 0.82)' }}>Let's talk</div>
           <h2 className="display">More patient care. <em>Less administrative burden.</em></h2>
           <p>Book a 30-minute discovery call. We'll audit your current operations and show you exactly where time and revenue are leaking — no pitch, no obligation.</p>
           <div className="actions">

@@ -70,8 +70,8 @@ export default function Footer() {
               <li><Link href="/solutions/medical-billing-rcm">Medical Billing</Link></li>
               <li><Link href="/solutions/provider-credential">Prior Authorization</Link></li>
               <li><Link href="/solutions/payer-insurer-enrollment">Insurance Verification</Link></li>
-              <li><Link href="/hire/medical">Virtual Medical Assistants</Link></li>
-              <li><Link href="/hire/dental">Front Desk Support</Link></li>
+              <li><Link href="/medical">Virtual Medical Assistants</Link></li>
+              <li><Link href="/dental">Front Desk Support</Link></li>
             </ul>
           </div>
 

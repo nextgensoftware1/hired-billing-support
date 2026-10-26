@@ -70,7 +70,7 @@ export default function HeroObgyn({ solution }: HeroProps) {
             }}>
               <div style={{
                 fontFamily: "var(--mono)",
-                fontSize: "10px",
+                fontSize: "11px",
                 textTransform: "uppercase",
                 letterSpacing: ".16em",
                 color: "var(--paper)",
@@ -108,7 +108,7 @@ export default function HeroObgyn({ solution }: HeroProps) {
                       {item.type === 'pill' ? (
                         <span style={{
                           fontFamily: "var(--mono)",
-                          fontSize: "9px",
+                          fontSize: "11px",
                           fontWeight: "600",
                           color: "var(--signal-deep)",
                           background: "rgba(0,200,150,.1)",
@@ -169,10 +169,10 @@ export default function HeroObgyn({ solution }: HeroProps) {
                     </div>
                     <div style={{
                       fontFamily: "var(--mono)",
-                      fontSize: "9px",
+                      fontSize: "11px",
                       textTransform: "uppercase",
                       letterSpacing: ".08em",
-                      color: "rgba(250, 247, 242, 0.5)",
+                      color: "rgba(250, 247, 242, 0.82)",
                     }}>
                       {stat.label}
                     </div>
@@ -189,7 +189,7 @@ export default function HeroObgyn({ solution }: HeroProps) {
               }}>
                 <div style={{
                   fontFamily: "var(--mono)",
-                  fontSize: "9px",
+                  fontSize: "11px",
                   textTransform: "uppercase",
                   letterSpacing: ".1em",
                   color: "var(--amber-deep)",

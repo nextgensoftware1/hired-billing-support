@@ -173,7 +173,7 @@ export default function CaseStudyDetailPage({ params }: { params: Promise<{ slug
           align-items: center;
           gap: 8px;
           padding: 8px 0;
-          color: var(--signal);
+          color: var(--signal-deep);
           text-decoration: none;
           font-family: var(--mono);
           font-size: 12px;

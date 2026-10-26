@@ -73,7 +73,7 @@ export default function HeroEndocrinology({ solution }: HeroProps) {
               <div
                 style={{
                   fontFamily: "var(--mono)",
-                  fontSize: "10px",
+                  fontSize: "11px",
                   textTransform: "uppercase",
                   letterSpacing: ".16em",
                   color: "var(--paper)",
@@ -186,10 +186,10 @@ export default function HeroEndocrinology({ solution }: HeroProps) {
                     <div
                       style={{
                         fontFamily: "var(--mono)",
-                        fontSize: "9px",
+                        fontSize: "11px",
                         textTransform: "uppercase",
                         letterSpacing: ".08em",
-                        color: "rgba(250, 247, 242, 0.5)",
+                        color: "rgba(250, 247, 242, 0.82)",
                       }}
                     >
                       {stat.label}
@@ -210,7 +210,7 @@ export default function HeroEndocrinology({ solution }: HeroProps) {
                 <div
                   style={{
                     fontFamily: "var(--mono)",
-                    fontSize: "9px",
+                    fontSize: "11px",
                     textTransform: "uppercase",
                     letterSpacing: ".1em",
                     color: "var(--amber-deep)",

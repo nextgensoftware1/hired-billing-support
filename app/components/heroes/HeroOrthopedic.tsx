@@ -70,10 +70,10 @@ export default function HeroOrthopedic({ solution }: HeroProps) {
             }}>
               <div style={{
                 fontFamily: "var(--mono)",
-                fontSize: "10px",
+                fontSize: "11px",
                 textTransform: "uppercase",
                 letterSpacing: ".16em",
-                color: "rgba(250, 247, 242, 0.5)",
+                color: "rgba(250, 247, 242, 0.82)",
                 marginBottom: "16px",
                 fontWeight: "600",
               }}>
@@ -151,7 +151,7 @@ export default function HeroOrthopedic({ solution }: HeroProps) {
                     </div>
                     <div style={{
                       fontFamily: "var(--mono)",
-                      fontSize: "9px",
+                      fontSize: "11px",
                       textTransform: "uppercase",
                       letterSpacing: ".08em",
                       color: "var(--paper)",
@@ -171,7 +171,7 @@ export default function HeroOrthopedic({ solution }: HeroProps) {
               }}>
                 <div style={{
                   fontFamily: "var(--mono)",
-                  fontSize: "9px",
+                  fontSize: "11px",
                   textTransform: "uppercase",
                   letterSpacing: ".1em",
                   color: "var(--amber-deep)",

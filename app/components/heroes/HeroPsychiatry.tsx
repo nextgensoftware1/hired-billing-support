@@ -62,7 +62,7 @@ export default function HeroPsychiatry({ solution }: HeroProps) {
             }}>
               <div style={{
                 fontFamily: "var(--mono)",
-                fontSize: "10px",
+                fontSize: "11px",
                 textTransform: "uppercase",
                 letterSpacing: ".16em",
                 color: "var(--paper)",
@@ -143,7 +143,7 @@ export default function HeroPsychiatry({ solution }: HeroProps) {
                     </div>
                     <div style={{
                       fontFamily: "var(--mono)",
-                      fontSize: "9px",
+                      fontSize: "11px",
                       textTransform: "uppercase",
                       letterSpacing: ".08em",
                       color: "var(--paper)",
@@ -163,7 +163,7 @@ export default function HeroPsychiatry({ solution }: HeroProps) {
               }}>
                 <div style={{
                   fontFamily: "var(--mono)",
-                  fontSize: "9px",
+                  fontSize: "11px",
                   textTransform: "uppercase",
                   letterSpacing: ".1em",
                   color: "var(--amber-deep)",

@@ -377,7 +377,7 @@ export default function enterprise() {
   <section className="final-cta" id="cta">
     <div className="final-cta-glow" />
     <div className="cta-inner">
-      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242,0.55)'}}>Start with an operations review
+      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242, 0.82)'}}>Start with an operations review
       </div>
       <h2 className="display">Send us your AR aging and denial summary.  <em>We will show you where the gaps are.</em></h2>
       <p>Within 10 business days, we deliver a free enterprise operations assessment — where revenue is leaking, which workflows need standardization, and what a scalable support model looks like for your organization.</p>

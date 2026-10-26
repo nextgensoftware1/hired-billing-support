@@ -182,48 +182,39 @@ export default function medical() {
       <div className="svc-grid fade-in">
         <div className="svc-card">
           <h4>Revenue Cycle Management</h4>
-          <p>End-to-end ownership — coding, claim submission, AR, denials, appeals, payment posting, patient billing.
-            One team, one scorecard.</p>
+          <p>End-to-end ownership of coding, claims, AR, denials, appeals, payment posting and patient billing, run by one team against one scorecard.</p>
         </div>
         <div className="svc-card">
           <h4>Prior Authorization</h4>
-          <p>Pre-cert submission, payer follow-up, peer-to-peer prep, status tracking. We shorten time-to-approval and
-            stop auths from delaying care.</p>
+          <p>Pre-cert submission, payer follow-up, peer-to-peer prep and status tracking. We shorten the time to approval so authorizations stop delaying patient care.</p>
         </div>
         <div className="svc-card">
           <h4>AR Follow-Up</h4>
-          <p>Every aging bucket worked. Payer calls, status checks, re-submissions, appeals. Most clients see AR days
-            drop below 30 in the first quarter.</p>
+          <p>We work every aging bucket with payer calls, status checks, resubmissions and appeals. Most clients see AR days drop below 30 within the first quarter.</p>
         </div>
         <div className="svc-card">
           <h4>Denial Management</h4>
-          <p>Every denial categorized, prioritized, and appealed by a specialist who knows the payer rules. Higher
-            overturn rates. Less staff time.</p>
+          <p>Every denial is categorized, prioritized and appealed by a specialist who knows the payer’s rules. The result is higher overturn rates and less staff time.</p>
         </div>
         <div className="svc-card">
           <h4>Insurance Verification</h4>
-          <p>Real-time benefits checks before the patient walks in. Co-pays, deductibles, coverage limits — documented
-            in the chart before rooming.</p>
+          <p>Real-time benefits checks before the patient walks in. Co-pays, deductibles and coverage limits are documented in the chart before the patient is roomed.</p>
         </div>
         <div className="svc-card">
           <h4>Virtual Medical Assistant</h4>
-          <p>Charting support, message triage, refill management, referrals, lab follow-up. A clinical extension that's
-            quiet, accurate, always there.</p>
+          <p>Charting support, message triage, refill management, referrals and lab follow-up. A quiet, accurate clinical extension of your team that is always there.</p>
         </div>
         <div className="svc-card">
           <h4>Front Desk Support</h4>
-          <p>Phones answered. Scheduling managed. Recall worked. New patients onboarded. Virtual coverage or full
-            takeover — your call.</p>
+          <p>Phones answered, scheduling managed, recall worked and new patients onboarded. Choose virtual coverage or a full front desk takeover. It is your call.</p>
         </div>
         <div className="svc-card">
           <h4>Coding Audit &amp; Review</h4>
-          <p>Quarterly accuracy review. We catch under-coding, missed modifiers, level mismatches quietly leaving money
-            on the table.</p>
+          <p>Every quarter we review coding accuracy and catch the under-coding, missed modifiers and level mismatches that quietly leave money on the table.</p>
         </div>
         <div className="svc-card">
           <h4>Healthcare Ops Management</h4>
-          <p>For larger practices: an operations lead embedded in your team. Workflows, dashboards, vendor management.
-            The COO-layer you don't have yet.</p>
+          <p>For larger practices, an operations lead embedded in your team to run workflows, dashboards and vendor management. The COO layer you don’t have yet.</p>
         </div>
       </div>
     </div>
@@ -394,7 +385,7 @@ export default function medical() {
   <section className="final-cta" id="cta">
     <div className="final-cta-glow" />
     <div className="cta-inner">
-      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242,.55)'}}>Let's look at the actual numbers
+      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242, 0.82)'}}>Let's look at the actual numbers
       </div>
       <h2 className="display">Send us a denial report. <em>We'll show you what's recoverable.</em></h2>
       <p>Send us a recent AR aging summary and a denial report. Within 5 business days, we'll come back with a free RCM

@@ -48,7 +48,7 @@ export default function FindServicesPage() {
           --signal-deep: #00876B;
           --signal-pale: rgba(0,200,150,.08);
           --amber: #F59E0B;
-          --amber-deep: #B45309;
+          --amber-deep: #92400E;
           --amber-pale: rgba(245,158,11,.08);
           --danger: #D64545;
           --danger-pale: rgba(214,69,69,.07);
@@ -75,7 +75,7 @@ export default function FindServicesPage() {
 
         .eyebrow{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-mute);display:inline-flex;align-items:center;gap:10px}
         .eyebrow::before{content:'';width:24px;height:1px;background:currentColor}
-        .eyebrow--light{color:rgba(250,247,242,.5)}
+        .eyebrow--light{color:rgba(250,247,242, 0.82)}
         .eyebrow--light::before{background:rgba(250,247,242,.4)}
 
         nav.top{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(250,247,242,.82);border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
@@ -116,19 +116,19 @@ export default function FindServicesPage() {
 
         .cp-card{background:var(--white);border:1px solid var(--paper-line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 4px 32px rgba(10,22,40,.10),0 1px 4px rgba(10,22,40,.05)}
         .cp-header{background:var(--ink);padding:22px 24px 18px}
-        .cp-header-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,242,.38);margin-bottom:12px}
+        .cp-header-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,242, 0.82);margin-bottom:12px}
         .cp-main-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:6px}
         .cp-big{font-family:var(--serif);font-size:2.6rem;color:var(--signal);line-height:1;font-variation-settings:"opsz" 144}
-        .cp-unit{font-size:11px;color:rgba(250,247,242,.45);padding-bottom:4px;margin-left:4px}
+        .cp-unit{font-size:11px;color:rgba(250,247,242, 0.82);padding-bottom:4px;margin-left:4px}
         .cp-trend{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--signal);background:rgba(0,200,150,.12);border:1px solid rgba(0,200,150,.2);padding:3px 10px;border-radius:100px}
         .cp-trend-dot{width:5px;height:5px;border-radius:50%;background:var(--signal)}
-        .cp-header-sub{font-family:var(--mono);font-size:9px;color:rgba(250,247,242,.35);letter-spacing:.08em;margin-top:6px}
+        .cp-header-sub{font-family:var(--mono);font-size:9px;color:rgba(250,247,242, 0.82);letter-spacing:.08em;margin-top:6px}
         .cp-body{background:#111f35;padding:16px 20px}
         .cp-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
         .cp-metric{padding:10px;border-bottom:1px solid rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.06)}
         .cp-metric:nth-child(2n){border-right:none}
         .cp-metric:nth-last-child(-n+2){border-bottom:none}
-        .cp-m-label{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.12em;color:rgba(250,247,242,.32);margin-bottom:5px}
+        .cp-m-label{font-family:var(--mono);font-size:8px;text-transform:uppercase;letter-spacing:.12em;color:rgba(250,247,242, 0.82);margin-bottom:5px}
         .cp-m-value{font-size:14px;font-weight:600;margin-bottom:5px}
         .cp-m-value.sig{color:var(--signal)}
         .cp-m-value.amb{color:var(--amber)}
@@ -152,7 +152,7 @@ export default function FindServicesPage() {
         .cp-footer{background:var(--ink);padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
         .cp-footer-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--signal)}
         .cp-footer-pulse{width:6px;height:6px;border-radius:50%;background:var(--signal)}
-        .cp-footer-right{font-family:var(--mono);font-size:9px;color:rgba(250,247,242,.3);letter-spacing:.08em}
+        .cp-footer-right{font-family:var(--mono);font-size:9px;color:rgba(250,247,242, 0.82);letter-spacing:.08em}
 
         .reveal{opacity:0;transform:translateY(20px)}
         .reveal-1{animation:rv .8s var(--ease) .10s forwards}
@@ -167,17 +167,17 @@ export default function FindServicesPage() {
         .consultation-section--warm{background:var(--paper-warm)}
         .consultation-section--ink{background:var(--ink);color:var(--paper)}
         .consultation-section--ink-soft{background:var(--ink-soft);color:var(--paper)}
-        .consultation-section--ink .eyebrow,.consultation-section--ink-soft .eyebrow{color:rgba(250,247,242,.5)}
+        .consultation-section--ink .eyebrow,.consultation-section--ink-soft .eyebrow{color:rgba(250,247,242, 0.82)}
         .consultation-section--ink .eyebrow::before,.consultation-section--ink-soft .eyebrow::before{background:rgba(250,247,242,.4)}
-        .consultation-section--ink p,.consultation-section--ink-soft p{color:rgba(250,247,242,.65)}
+        .consultation-section--ink p,.consultation-section--ink-soft p{color:rgba(250,247,242, 0.82)}
 
         .section-header{margin-bottom:64px}
         .section-title{font-family:var(--serif);font-size:clamp(2rem,3.8vw,3rem);font-weight:400;letter-spacing:-.025em;line-height:1.06;margin-top:16px;max-width:780px;font-variation-settings:"opsz" 144}
         .section-title em{font-style:italic;font-weight:300;color:var(--ink-mute)}
         .section-subtitle{margin-top:18px;font-size:16px;line-height:1.75;color:var(--ink-mute);max-width:560px}
         .consultation-section--ink .section-title,.consultation-section--ink-soft .section-title{color:var(--paper)}
-        .consultation-section--ink .section-title em,.consultation-section--ink-soft .section-title em{color:rgba(250,247,242,.5)}
-        .consultation-section--ink .section-subtitle,.consultation-section--ink-soft .section-subtitle{color:rgba(250,247,242,.6)}
+        .consultation-section--ink .section-title em,.consultation-section--ink-soft .section-title em{color:rgba(250,247,242, 0.82)}
+        .consultation-section--ink .section-subtitle,.consultation-section--ink-soft .section-subtitle{color:rgba(250,247,242, 0.82)}
 
         .monologue{max-width:780px;border-left:2px solid var(--paper-line);padding-left:32px}
         .monologue p{font-size:16px;line-height:1.85;color:var(--ink-soft);margin-bottom:20px}
@@ -229,7 +229,7 @@ export default function FindServicesPage() {
         .process-step p{font-size:14px;color:var(--ink-mute);line-height:1.72}
         .consultation-section--ink .process-step{border-color:rgba(250,247,242,.1)}
         .consultation-section--ink .process-step h4{color:var(--paper)}
-        .consultation-section--ink .process-step p{color:rgba(250,247,242,.6)}
+        .consultation-section--ink .process-step p{color:rgba(250,247,242, 0.82)}
         .consultation-section--ink .process-step-num{color:var(--signal)}
 
         .workflow-dashboard{display:flex;align-items:flex-start;gap:0;margin-top:48px;position:relative;overflow-x:auto;padding-bottom:8px}
@@ -274,26 +274,26 @@ export default function FindServicesPage() {
 
         .compare-wrap{background:var(--ink);border-radius:var(--radius-lg);overflow:hidden;margin-top:48px}
         .compare-header{display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 28px;background:rgba(255,255,255,.04)}
-        .compare-header span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.35)}
+        .compare-header span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242, 0.82)}
         .compare-header span.hbs-col{color:var(--signal)}
         .compare-row{display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 28px;border-top:1px solid rgba(255,255,255,.05)}
         .compare-row span{font-size:13px}
-        .c-label{color:rgba(250,247,242,.55)}
+        .c-label{color:rgba(250,247,242, 0.82)}
         .c-hbs{color:var(--signal);font-weight:500}
-        .c-other{color:rgba(250,247,242,.3)}
+        .c-other{color:rgba(250,247,242, 0.82)}
 
         .cta-section{background:var(--ink);padding:120px var(--gutter);text-align:center;position:relative;overflow:hidden}
         .cta-glow{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse at center,rgba(0,200,150,.2),transparent 70%);pointer-events:none}
         .cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto}
         .cta-title{font-family:var(--serif);font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:400;letter-spacing:-.025em;line-height:1.06;color:var(--paper);margin:16px 0 24px;font-variation-settings:"opsz" 144}
-        .cta-title em{font-style:italic;font-weight:300;color:rgba(250,247,242,.5)}
-        .cta-text{font-size:16px;line-height:1.75;color:rgba(250,247,242,.6);margin-bottom:40px}
+        .cta-title em{font-style:italic;font-weight:300;color:rgba(250,247,242, 0.82)}
+        .cta-text{font-size:16px;line-height:1.75;color:rgba(250,247,242, 0.82);margin-bottom:40px}
         .cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-        .trust-line{margin-top:28px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,242,.35)}
+        .trust-line{margin-top:28px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,242, 0.82)}
 
-        footer{background:var(--ink);color:rgba(250,247,242,.6);padding:60px 0 32px;border-top:1px solid rgba(255,255,255,.06)}
+        footer{background:var(--ink);color:rgba(250,247,242, 0.82);padding:60px 0 32px;border-top:1px solid rgba(255,255,255,.06)}
         .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;font-size:13px}
-        .footer-inner a{color:rgba(250,247,242,.6)}
+        .footer-inner a{color:rgba(250,247,242, 0.82)}
         .footer-inner a:hover{color:var(--signal)}
         .footer-legal{display:flex;gap:24px}
 
@@ -592,7 +592,7 @@ export default function FindServicesPage() {
                 }
               ].map((category, catIndex) => (
                 <div key={catIndex} style={{ background: 'var(--white)', border: '1px solid var(--paper-line)', borderRadius: 'var(--radius-lg)', padding: '24px' }}>
-                  <div style={{ fontFamily: 'var(--mono)', fontSize: '9px', letterSpacing: '.14em', textTransform: 'uppercase', color: category.color, marginBottom: '10px' }}>
+                  <div style={{ fontFamily: 'var(--mono)', fontSize: '13px', letterSpacing: '.14em', textTransform: 'uppercase', color: category.color, marginBottom: '10px' }}>
                     {category.title}
                   </div>
                   <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>

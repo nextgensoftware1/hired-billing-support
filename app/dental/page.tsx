@@ -583,58 +583,58 @@ export default function dental() {
       <div className="service-card">
         <div className="service-card-tag tag-calls">Inbound</div>
         <h4>Inbound Call Support</h4>
-        <div className="pain">Pain: Missed calls, patients on hold, front desk overwhelmed</div>
-        <p>New patient inquiries, scheduling requests, insurance questions, billing questions, treatment questions, and follow-up calls — answered, documented, and routed without overwhelming your in-office team. No more missed calls during check-in or lunch rush.</p>
+        <div className="pain">Pain: Missed calls, long holds, overwhelmed front desk</div>
+        <p>New patient inquiries and scheduling, insurance, billing and treatment questions are answered, documented and routed for you. Your in-office team stays focused, and no call is missed during check-in or the lunch rush.</p>
         <div className="outcome">→ More calls answered. More patients scheduled.</div>
       </div>
       <div className="service-card">
         <div className="service-card-tag tag-calls">Outbound</div>
         <h4>Outbound Call Support</h4>
-        <div className="pain">Pain: Recall gaps, no-shows, unscheduled treatment</div>
-        <p>Appointment reminders, recall calls, treatment plan follow-up, no-show follow-up, patient balance follow-up, hygiene reactivation, and new patient inquiry callbacks — consistent outbound communication that turns missed opportunities into scheduled care.</p>
-        <div className="outcome">→ Fuller schedules. Fewer gaps. Better recall rates.</div>
+        <div className="pain">Pain: Recall gaps, no-shows and unscheduled treatment</div>
+        <p>We handle appointment reminders, recall calls, hygiene reactivation, treatment plan and no-show follow-up, balance calls and new patient callbacks. Steady, consistent outreach turns missed opportunities into scheduled care.</p>
+        <div className="outcome">→ Fuller schedules, fewer gaps, better recall.</div>
       </div>
       <div className="service-card">
         <div className="service-card-tag tag-rcm">RCM</div>
         <h4>Dental RCM Support</h4>
         <div className="pain">Pain: Claims sitting, AR growing, collections lagging</div>
-        <p>Dental billing, CDT-coded claim submission, claim follow-up, payment posting, denial management, PPO write-off review, underpayment appeals, insurance aging review, and production-to-collection visibility. Clean-claim rate above 98%.</p>
-        <div className="outcome">→ Revenue moves through the cycle. Collections match production.</div>
+        <p>CDT-coded claim submission, claim follow-up, payment posting, denial management, PPO write-off review, underpayment appeals and insurance aging review, with clear production-to-collection visibility. Clean-claim rate above 98%.</p>
+        <div className="outcome">→ Steady cash flow. Collections match production.</div>
       </div>
       <div className="service-card">
         <div className="service-card-tag tag-insurance">Insurance</div>
         <h4>Insurance Verification</h4>
-        <div className="pain">Pain: Patients arrive unverified, cost surprises, claim delays</div>
-        <p>Eligibility checks, benefits breakdown, PPO plan verification, deductibles, co-pays, annual maximums, frequency limitations, waiting periods, pre-authorization support — all documented inside your chart 48 hours before the appointment.</p>
-        <div className="outcome">→ Cleaner treatment planning. Fewer surprised patients.</div>
+        <div className="pain">Pain: Unverified patients, cost surprises, claim delays</div>
+        <p>Eligibility checks, benefit breakdowns, PPO plan verification, deductibles, co-pays, annual maximums, frequency limits, waiting periods and pre-authorization support, all documented in your chart 48 hours before the visit.</p>
+        <div className="outcome">→ Cleaner treatment plans. Fewer surprised patients.</div>
       </div>
       <div className="service-card">
         <div className="service-card-tag tag-ar">AR &amp; Claims</div>
         <h4>AR &amp; Claim Follow-Up</h4>
         <div className="pain">Pain: Aging AR, untouched 90+ buckets, slow recovery</div>
-        <p>Every aging bucket worked — 30, 60, 90, 120+. Payer calls, re-submissions, narrative appeals, denial categorization, and payment resolution. Most dental clients see AR days drop below 25 within 90 days.</p>
-        <div className="outcome">→ Faster payments. Smaller aging buckets. Recovered revenue.</div>
+        <p>We work every aging bucket: 30, 60, 90 and 120+ days. Payer calls, resubmissions, narrative appeals, denial categorization and payment resolution are all covered. Most dental clients see AR days fall below 25 within 90 days.</p>
+        <div className="outcome">→ Faster payments, smaller buckets, more revenue.</div>
       </div>
       <div className="service-card">
         <div className="service-card-tag tag-patient">Patient Comm</div>
         <h4>Treatment Plan Follow-Up</h4>
-        <div className="pain">Pain: Accepted treatment never scheduled, revenue left on table</div>
-        <p>Patients who said yes to treatment but never scheduled get consistent, professional follow-up. Unscheduled treatment reports reviewed daily. Warm outreach converts treatment acceptance into completed care and collected revenue.</p>
-        <div className="outcome">→ Treatment acceptance that actually becomes treatment completion.</div>
+        <div className="pain">Pain: Accepted treatment never booked, revenue lost</div>
+        <p>Patients who said yes to treatment but never booked get consistent, professional follow-up. We review unscheduled treatment reports daily, and warm outreach turns accepted treatment into completed care and collected revenue.</p>
+        <div className="outcome">→ Accepted treatment that actually gets completed.</div>
       </div>
       <div className="service-card">
         <div className="service-card-tag tag-admin">Admin</div>
         <h4>Administrative Support</h4>
-        <div className="pain">Pain: Tasks pile up, follow-ups missed, data entry delayed</div>
-        <p>Patient data entry, appointment coordination, form follow-up, documentation organization, insurance document collection, daily task queue support, provider schedule support, referral management, and reporting support — the remote admin layer that keeps operations moving.</p>
-        <div className="outcome">→ Less admin burden. More focus on patient care.</div>
+        <div className="pain">Pain: Tasks piling up, missed follow-ups, late data entry</div>
+        <p>Patient data entry, appointment coordination, form follow-up, insurance document collection, daily task queues, provider schedules, referral management and reporting. We are the remote admin layer that keeps your operations moving.</p>
+        <div className="outcome">→ Less admin burden, more focus on patient care.</div>
       </div>
       <div className="service-card">
         <div className="service-card-tag tag-patient">Communication</div>
         <h4>Patient Communication Support</h4>
-        <div className="pain">Pain: Patient questions unanswered, statements unclear, frustration</div>
-        <p>Patient billing questions answered with clarity and empathy. Statements sent on schedule. Balance follow-up without making patients feel hounded. Insurance explanation support. Post-treatment communication that builds loyalty, not friction.</p>
-        <div className="outcome">→ Stronger patient experience. Better retention.</div>
+        <div className="pain">Pain: Unanswered questions, unclear statements, frustration</div>
+        <p>Billing questions answered with clarity and empathy, statements sent on schedule, and balance follow-up that never feels pushy. We also explain insurance and handle post-treatment communication that builds loyalty, not friction.</p>
+        <div className="outcome">→ A better patient experience. Stronger retention.</div>
       </div>
     </div>
   </div>
@@ -1021,7 +1021,7 @@ export default function dental() {
   <section className="final-cta" id="cta">
     <div className="final-cta-glow" />
     <div className="cta-inner">
-      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242,0.55)'}}>Build your dental support team
+      <div className="eyebrow" style={{justifyContent: 'center', color: 'rgba(250,247,242, 0.82)'}}>Build your dental support team
       </div>
       <h2 className="display">Send us your production report and aging summary. <em>We will show you where the gap is.</em></h2>
       <p>Within 5 business days, we will come back with a free audit showing exactly where revenue is leaking — missed calls, unverified insurance, unworked AR, treatment follow-up gaps — and what we would do about it. No pitch. No pressure. If the audit shows you do not need us, we will tell you.</p>

@@ -73,9 +73,6 @@ export default function ContactPage() {
           --radius-lg: 12px;
           --max: 1280px;
           --gutter: clamp(20px, 4vw, 48px);
-          --font-fraunces: 'Fraunces', 'Times New Roman', serif;
-          --font-inter-tight: 'Inter Tight', -apple-system, sans-serif;
-          --font-jetbrains-mono: 'JetBrains Mono', monospace;
           --serif: var(--font-fraunces);
           --sans: var(--font-inter-tight);
           --mono: var(--font-jetbrains-mono);
@@ -160,7 +157,7 @@ export default function ContactPage() {
           height: 1px;
           background: currentColor;
         }
-        .eyebrow-light { color: rgba(250, 247, 242, 0.55); }
+        .eyebrow-light { color: rgba(250, 247, 242, 0.82); }
 
         /* Display Heading (MATCH YOUR .display CLASS) */
         .display {

@@ -66,9 +66,6 @@ export default function CaseStudyPage() {
           --radius-lg: 12px;
           --max: 1280px;
           --gutter: clamp(20px, 4vw, 48px);
-          --font-fraunces: 'Fraunces', 'Times New Roman', serif;
-          --font-inter-tight: 'Inter Tight', -apple-system, sans-serif;
-          --font-jetbrains-mono: 'JetBrains Mono', monospace;
           --serif: var(--font-fraunces);
           --sans: var(--font-inter-tight);
           --mono: var(--font-jetbrains-mono);
@@ -147,7 +144,7 @@ export default function CaseStudyPage() {
           font-size: 11px;
           text-transform: uppercase;
           letter-spacing: 0.18em;
-          color: var(--signal);
+          color: var(--signal-deep);
           display: inline-flex;
           align-items: center;
           gap: 10px;
@@ -171,7 +168,7 @@ export default function CaseStudyPage() {
         .display em {
           font-style: italic;
           font-weight: 300;
-          color: var(--signal);
+          color: var(--signal-deep);
         }
 
         /* Subtext */
@@ -204,7 +201,7 @@ export default function CaseStudyPage() {
         }
         .tagline em {
           font-style: italic;
-          color: var(--signal);
+          color: var(--signal-deep);
         }
 
         /* =========================================
@@ -448,7 +445,7 @@ export default function CaseStudyPage() {
           font-size: 10px;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          color: rgba(250, 247, 242, 0.5);
+          color: rgba(250, 247, 242, 0.82);
         }
 
         .trust-item svg {

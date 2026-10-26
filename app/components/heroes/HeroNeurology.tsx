@@ -74,7 +74,7 @@ export default function HeroNeurology({ solution }: HeroProps) {
               <div
                 style={{
                   fontFamily: "var(--mono)",
-                  fontSize: "10px",
+                  fontSize: "11px",
                   textTransform: "uppercase",
                   letterSpacing: ".16em",
                   color: "var(--ink-mute)",
@@ -192,10 +192,10 @@ export default function HeroNeurology({ solution }: HeroProps) {
                     <div
                       style={{
                         fontFamily: "var(--mono)",
-                        fontSize: "9px",
+                        fontSize: "11px",
                         textTransform: "uppercase",
                         letterSpacing: ".08em",
-                        color: "rgba(250, 247, 242, 0.5)",
+                        color: "rgba(250, 247, 242, 0.82)",
                       }}
                     >
                       {stat.label}
@@ -216,7 +216,7 @@ export default function HeroNeurology({ solution }: HeroProps) {
                 <div
                   style={{
                     fontFamily: "var(--mono)",
-                    fontSize: "9px",
+                    fontSize: "11px",
                     textTransform: "uppercase",
                     letterSpacing: ".1em",
                     color: "var(--amber-deep)",

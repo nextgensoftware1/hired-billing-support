@@ -124,7 +124,7 @@ export default function HeroEnterprisemedicaloperation({ solution }: HeroProps) 
     .dash-stat-num {
       font-family: 'Fraunces', serif;
       font-size: 1.25rem;
-      color: #00876B;
+      color: #006B55;
       display: block;
       line-height: 1;
       margin-bottom: 4px;
