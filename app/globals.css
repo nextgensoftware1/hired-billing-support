@@ -581,7 +581,7 @@ nav.top.scrolled {
 
 .btn-ghost:hover {
     background: var(--ink);
-  color: var(--paper);
+  /* color: var(--paper); */
 }
 .btn-ghost-solution {
     background: transparent;
