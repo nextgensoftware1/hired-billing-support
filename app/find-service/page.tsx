@@ -1,21 +1,7 @@
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
 export default function FindServicesPage() {
-  const navRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-
-    const handleScroll = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 8);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -78,16 +64,6 @@ export default function FindServicesPage() {
         .eyebrow--light{color:rgba(250,247,242, 0.82)}
         .eyebrow--light::before{background:rgba(250,247,242,.4)}
 
-        nav.top{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(250,247,242,.82);border-bottom:1px solid transparent;transition:border-color .3s var(--ease)}
-        nav.top.scrolled{border-bottom-color:var(--paper-line)}
-        .nav-inner{max-width:var(--max);margin:0 auto;padding:18px var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:32px}
-        .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:-.02em;color:var(--ink)}
-        .logo-mark{width:28px;height:28px;background:var(--ink);border-radius:50%;position:relative;flex-shrink:0}
-        .logo-mark::after{content:'';position:absolute;inset:7px;border-radius:50%;background:var(--signal)}
-        .nav-links{display:flex;gap:32px;list-style:none}
-        .nav-links a{color:var(--ink-soft);font-size:14px;font-weight:500;transition:color .2s}
-        .nav-links a:hover{color:var(--ink)}
-
         .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius);font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:background .2s var(--ease),color .2s,transform .15s;white-space:nowrap}
         .btn:hover{transform:translateY(-1px)}
         .btn .arrow{transition:transform .2s;flex-shrink:0}
@@ -95,7 +71,7 @@ export default function FindServicesPage() {
         .btn-primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
         .btn-primary:hover{background:var(--ink-soft)}
         .btn-ghost{background:transparent;color:var(--ink);border-color:var(--paper-line)}
-        .btn-ghost:hover{background:var(--paper-warm);border-color:var(--ink-mute)}
+        .btn-ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
         .btn-light{background:var(--paper);color:var(--ink);border-color:var(--paper)}
         .btn-light:hover{background:var(--paper-warm)}
         .btn-signal{background:var(--signal);color:var(--ink);border-color:var(--signal)}
@@ -319,7 +295,6 @@ export default function FindServicesPage() {
           .consultation-hero-lede{font-size:15px;max-width:100%;margin-top:16px;margin-bottom:28px}
           .cta-section{padding:80px var(--gutter)}
           .section-header{margin-bottom:40px}
-          .nav-links{display:none}
           .compare-header,.compare-row{grid-template-columns:1.5fr 1fr 1fr;padding:12px 16px}
           .decision-grid{grid-template-columns:1fr 1fr}
           .pathway-grid{grid-template-columns:1fr}

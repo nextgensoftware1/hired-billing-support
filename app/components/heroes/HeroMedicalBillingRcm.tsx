@@ -59,7 +59,7 @@ export default function HeroMedicalBillingRcm({ solution }: HeroProps) {
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>
                 </a>
-                <a href="#services" className="btn btn-ghost-solution btn-lg">
+                <a href="#services" className="btn btn-ghost btn-lg">
                   Services
                 </a>
               </div>

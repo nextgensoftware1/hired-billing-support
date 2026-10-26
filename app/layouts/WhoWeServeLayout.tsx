@@ -230,8 +230,9 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
     }
 
     .btn-ghost:hover {
-      background: var(--paper-warm);
-      border-color: var(--ink-mute);
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
     }
 
     .btn-light {
@@ -274,7 +275,7 @@ const WhoWeServeLayout = ({ solution, slug }: WhoWeServeLayoutProps) => {
       display: grid;
       grid-template-columns: 1fr 420px;
       gap: 64px;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .who-hero-badge {

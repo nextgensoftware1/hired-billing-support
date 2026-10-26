@@ -581,7 +581,7 @@ nav.top.scrolled {
 
 .btn-ghost:hover {
     background: var(--ink);
-  /* color: var(--paper); */
+    color: var(--paper);
 }
 .btn-ghost-solution {
     background: transparent;
@@ -658,7 +658,7 @@ nav.top.scrolled {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
     gap: clamp(40px, 6vw, 80px);
-    align-items: center;
+    align-items: flex-start;
 }
 
 .hero h1,

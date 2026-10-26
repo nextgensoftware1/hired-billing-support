@@ -150,8 +150,9 @@ export default function HeroPayers({ solution }: HeroProps) {
     }
 
     .btn-ghost:hover {
-      background: #F2EDE3;
-      border-color: #475569;
+      background: #0A1628;
+      color: #FAF7F2;
+      border-color: #0A1628;
     }
 
     .btn-lg {
