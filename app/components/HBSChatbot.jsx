@@ -94,14 +94,14 @@ export default function HBSChatbot() {
         .hc *{box-sizing:border-box;font-family:var(--sans, 'Inter', sans-serif)}
 
         /* Launcher */
-        .hc-fab{position:fixed;bottom:clamp(16px, 3vh, 28px);right:clamp(16px, 3vw, 28px);z-index:90;display:flex;align-items:center;gap:12px;cursor:pointer}
+        .hc-fab{position:fixed;bottom:clamp(16px, 3vh, 28px);right:clamp(16px, 3vw, 28px);z-index:110;display:flex;align-items:center;gap:12px;cursor:pointer}
         .hc-fab-btn{background:linear-gradient(135deg, var(--ink), var(--ink-soft));border:none;width:clamp(54px, 12vw, 62px);height:clamp(54px, 12vw, 62px);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(10, 22, 40, 0.5);cursor:pointer;transition:transform 0.2s, box-shadow 0.2s;position:relative}
         .hc-fab-btn:hover{transform:scale(1.08);box-shadow:0 10px 36px rgba(10, 22, 40, 0.6)}
         .hc-fab-pulse{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:var(--signal);border-radius:50%;border:2.5px solid var(--white)}
         .hc-fab-label{background:var(--white);color:var(--ink);font-size:clamp(12px, 2.5vw, 13px);font-weight:600;padding:9px 16px;border-radius:22px;box-shadow:0 3px 14px rgba(0,0,0, 0.12);white-space:nowrap;pointer-events:none}
 
         /* Window */
-        .hc-win{position:fixed;bottom:clamp(18px, 3vh, 28px);right:clamp(12px, 3vw, 28px);z-index:90;width:clamp(280px, 90vw, 388px);height:clamp(480px, 72vh, 650px);max-height:calc(100vh - 48px);display:flex;flex-direction:column;border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:0 24px 72px rgba(0,0,0,0.18), 0 4px 20px rgba(0,0,0,0.09);animation:hc-in 0.28s cubic-bezier(0.34, 1.56, 0.64, 1)}
+        .hc-win{position:fixed;bottom:clamp(18px, 3vh, 28px);right:clamp(12px, 3vw, 28px);z-index:110;width:clamp(280px, 90vw, 388px);height:clamp(480px, 72vh, 650px);max-height:calc(100vh - 48px);display:flex;flex-direction:column;border-radius:var(--radius-lg);overflow:hidden;background:var(--white);box-shadow:0 24px 72px rgba(0,0,0,0.18), 0 4px 20px rgba(0,0,0,0.09);animation:hc-in 0.28s cubic-bezier(0.34, 1.56, 0.64, 1)}
         @keyframes hc-in{from{opacity:0;transform:translateY(20px) scale(0.94)}to{opacity:1;transform:none}}
         .hc-win.min{max-height:72px}
 
