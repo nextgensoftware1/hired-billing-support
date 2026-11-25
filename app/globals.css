@@ -2114,6 +2114,13 @@ footer {
   margin-bottom: 4px;
 }
 
+.footer-contact-list address {
+  color: rgba(250, 247, 242, 0.75);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.6;
+}
+
 .footer-contact-list a {
   white-space: nowrap;
 }

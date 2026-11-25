@@ -449,11 +449,16 @@ export default function ContactPage() {
           display: block;
         }
         .info-text span,
-        .info-text a {
+        .info-text a,
+        .info-text address {
           font-size: 14px;
           color: var(--ink);
           line-height: 1.55;
           text-decoration: none;
+        }
+        .info-text address {
+          display: block;
+          font-style: normal;
         }
         .info-text a:hover { color: var(--signal); }
 
@@ -543,6 +548,12 @@ export default function ContactPage() {
           letter-spacing: -0.02em;
           color: var(--ink);
           margin-top: 12px;
+        }
+        .map-address {
+          margin: 14px 0 0;
+          color: var(--ink-mute);
+          font-size: 15px;
+          line-height: 1.6;
         }
         .map-frame {
           border-radius: var(--radius-lg);
@@ -744,6 +755,19 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              <div className="info-row">
+                <div className="info-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <div className="info-text">
+                  <strong>Mailing Address</strong>
+                  <address>30 Bridge Road, Nanuet, NY 10954, United States</address>
+                </div>
+              </div>
+
               <div className="stats-grid">
                 <div className="stat-item">
                   <div className="stat-num">500+</div>
@@ -789,10 +813,11 @@ export default function ContactPage() {
             <div className="map-header reveal reveal-2">
               <span className="eyebrow eyebrow-dark">— Our Location</span>
               <h2>Find Us on the Map</h2>
+              <p className="map-address">30 Bridge Road, Nanuet, NY 10954, United States</p>
             </div>
             <div className="map-frame reveal reveal-3">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215256765774!2d-73.98731492346988!3d40.75797443440888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b30cb1c1%3A0x4b0d2c22c0c18a!2sMidtown%20Manhattan%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1718200000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps?q=30%20Bridge%20Road%2C%20Nanuet%2C%20NY%2010954%2C%20United%20States&output=embed"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

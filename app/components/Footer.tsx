@@ -117,6 +117,10 @@ export default function Footer() {
             <h6>Contact</h6>
             <ul className="footer-contact-list">
               <li>
+                <strong>Mailing Address</strong>
+                <address>30 Bridge Road, Nanuet, NY 10954, United States</address>
+              </li>
+              <li>
                 <strong>Customer Support</strong>
                 <a href="tel:+16072601528">+1 607 260 1528</a>
               </li>
