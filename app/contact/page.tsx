@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -14,24 +15,63 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [honeypot, setHoneypot] = useState('');
+  const firstErrorRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  const [attribution, setAttribution] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const cookie = document.cookie
+      .split('; ')
+      .find((entry) => entry.startsWith('hbs_attribution='));
+    if (!cookie) return;
+    try {
+      setAttribution(JSON.parse(decodeURIComponent(cookie.slice('hbs_attribution='.length))));
+    } catch {
+      setAttribution({});
+    }
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFieldErrors((prev) => ({ ...prev, [e.target.name]: '' }));
     if (error) setError('');
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    firstErrorRef.current = null;
+    const nextErrors: Record<string, string> = {};
+    if (!formData.name.trim()) nextErrors.name = 'Full name is required.';
+    if (!formData.email.trim()) nextErrors.email = 'Email address is required.';
+    if (!formData.message.trim()) nextErrors.message = 'Please tell us how we can help.';
+    if (Object.keys(nextErrors).length) {
+      setFieldErrors(nextErrors);
+      setError('Please correct the highlighted fields.');
+      window.requestAnimationFrame(() => firstErrorRef.current?.focus());
+      return;
+    }
     setLoading(true);
     setError('');
+    setFieldErrors({});
 
     try {
+      const submissionId =
+        sessionStorage.getItem('hbs_contact_submission') || crypto.randomUUID();
+      sessionStorage.setItem('hbs_contact_submission', submissionId);
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          website: honeypot,
+          submissionId,
+          ...attribution,
+          landing_page: attribution.landing_page || `${window.location.pathname}${window.location.search}`,
+          referrer: attribution.referrer || document.referrer || '',
+        }),
       });
 
       const result = await response.json();
@@ -42,6 +82,19 @@ export default function ContactPage() {
 
       setFormData({ name: '', email: '', phone: '', practiceName: '', companyName: '', message: '' });
       setSubmitted(true);
+      try {
+        const fired = sessionStorage.getItem(`hbs_lead_fired_${submissionId}`);
+        if (!fired) {
+          (window as typeof window & { dataLayer?: unknown[] }).dataLayer?.push({
+            event: 'generate_lead',
+            form_id: 'contact',
+            page_path: window.location.pathname,
+          });
+          sessionStorage.setItem(`hbs_lead_fired_${submissionId}`, 'true');
+        }
+      } catch {
+        // Form submission and lead capture remain functional without analytics.
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unable to send your message.');
     } finally {
@@ -635,9 +688,9 @@ export default function ContactPage() {
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
               </a>
-              <a href="#map-section" className="btn btn-ghost btn-lg">
-                Find Our Office
-              </a>
+              <span className="btn btn-ghost btn-lg">
+                Business Inquiries
+              </span>
             </div>
           </div>
         </section>
@@ -656,33 +709,69 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3>Message Received</h3>
-                <p>A billing specialist will reach out within 1 business day to schedule your free consultation.</p>
+                <p>Thanks — we received your request and will reply within 1 business day.</p>
               </div>
             ) : (
               <>
                 <div className="card-mono-label">— Free Consultation Request</div>
                 <h2 className="card-title">Get in Touch</h2>
-                <p className="card-sub">Fill out the form and we'll get back to you within 24 hours.</p>
+                <p className="card-sub">Fill out the form and we'll get back to you within 1 business day.</p>
 
+                <form onSubmit={handleSubmit} noValidate>
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(event) => setHoneypot(event.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: 'absolute', left: '-10000px' }}
+                  />
+                    {[
+                      'gclid',
+                      'gbraid',
+                      'wbraid',
+                      'utm_source',
+                      'utm_medium',
+                      'utm_campaign',
+                      'utm_term',
+                      'utm_content',
+                      'landing_page',
+                      'referrer',
+                    ].map((key) => (
+                      <input
+                        key={key}
+                        type="hidden"
+                        name={key}
+                        value={
+                          key === 'landing_page'
+                            ? (attribution[key] || `${typeof window !== 'undefined' ? window.location.pathname : ''}`)
+                            : (attribution[key] || '')
+                        }
+                      />
+                    ))}
                 <div className="form-grid-2">
                   <div className="form-group">
-                    <label>Full Name<em>*</em></label>
-                    <input type="text" name="name" placeholder="e.g. HBS" value={formData.name} onChange={handleChange} />
+                    <label htmlFor="contact-name">Full Name<em>*</em></label>
+                    <input ref={(node) => { if (!firstErrorRef.current && fieldErrors.name) firstErrorRef.current = node; }} id="contact-name" type="text" name="name" placeholder="e.g. HBS" value={formData.name} onChange={handleChange} aria-invalid={Boolean(fieldErrors.name)} aria-describedby={fieldErrors.name ? 'contact-name-error' : undefined} required />
+                    {fieldErrors.name ? <span id="contact-name-error" className="form-error">{fieldErrors.name}</span> : null}
                   </div>
                   <div className="form-group">
-                    <label>Email Address<em>*</em></label>
-                    <input type="email" name="email" placeholder="e.g. hello@hiredbillingsupport.com" value={formData.email} onChange={handleChange} />
+                    <label htmlFor="contact-email">Email Address<em>*</em></label>
+                    <input ref={(node) => { if (!firstErrorRef.current && fieldErrors.email) firstErrorRef.current = node; }} id="contact-email" type="email" name="email" placeholder="e.g. hello@hiredbillingsupport.com" value={formData.email} onChange={handleChange} aria-invalid={Boolean(fieldErrors.email)} aria-describedby={fieldErrors.email ? 'contact-email-error' : undefined} required />
+                    {fieldErrors.email ? <span id="contact-email-error" className="form-error">{fieldErrors.email}</span> : null}
                   </div>
                 </div>
 
                 <div className="form-grid-2">
                   <div className="form-group">
-                    <label>Phone Number<em>*</em></label>
-                    <input type="tel" name="phone" placeholder="e.g. +1 (607) 260-1528" value={formData.phone} onChange={handleChange} />
+                    <label htmlFor="contact-phone">Phone Number</label>
+                    <input id="contact-phone" type="tel" name="phone" placeholder="e.g. +1 (607) 260-1528" value={formData.phone} onChange={handleChange} />
                   </div>
                   <div className="form-group">
-                    <label>I'm Interested In <em>*</em></label>
-                    <input type="text" name="practiceName" placeholder="e.g.  Medicine/Dental/Enterprise/Mso" value={formData.practiceName} onChange={handleChange} />
+                    <label htmlFor="contact-practice">I'm Interested In</label>
+                    <input id="contact-practice" type="text" name="practiceName" placeholder="e.g. Medicine/Dental/Enterprise/MSO" value={formData.practiceName} onChange={handleChange} />
                   </div>
                 </div>
 
@@ -692,16 +781,25 @@ export default function ContactPage() {
                 </div>
 
                 <div className="form-group">
-                  <label>How can we help?<em>*</em></label>
+                  <label htmlFor="contact-message">How can we help?<em>*</em></label>
                   <textarea
+                    ref={(node) => { if (!firstErrorRef.current && fieldErrors.message) firstErrorRef.current = node; }}
+                    id="contact-message"
                     name="message"
                     placeholder=" Type your message here"
                     value={formData.message}
                     onChange={handleChange}
+                    aria-invalid={Boolean(fieldErrors.message)}
+                    aria-describedby={fieldErrors.message ? 'contact-message-error' : undefined}
+                    required
                   />
+                  {fieldErrors.message ? <span id="contact-message-error" className="form-error">{fieldErrors.message}</span> : null}
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                  <p className="form-note">
+                    For business inquiries only. Please don't include patient names, claim numbers or medical records.
+                    {' '}<Link href="/privacy-policy">Privacy policy</Link>
+                  </p>
                   <div className="form-actions">
                     <button className="btn btn-primary btn-lg" type="submit" disabled={loading || !isValid}>
                       {loading ? (
@@ -717,7 +815,6 @@ export default function ContactPage() {
                         </>
                       )}
                     </button>
-                    <span className="form-note">— Response within 24 hrs</span>
                   </div>
                   {error ? <div className="form-error">{error}</div> : null}
                 </form>
@@ -770,22 +867,9 @@ export default function ContactPage() {
 
               <div className="stats-grid">
                 <div className="stat-item">
-                  <div className="stat-num">500+</div>
-                  <div className="stat-label">Practices</div>
+                  <div className="stat-num" style={{ color: 'var(--accent)' }}>1</div>
+                  <div className="stat-label">Business day response</div>
                 </div>
-                <div className="stat-item">
-                  <div className="stat-num" style={{ color: 'var(--accent)' }}>24hr</div>
-                  <div className="stat-label">Response</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-num">98%</div>
-                  <div className="stat-label">Satisfaction</div>
-                </div>
-              </div>
-
-              <div className="alert-callout">
-                <div className="alert-callout-label">— HIPAA Compliant</div>
-                <div className="alert-callout-text">All communications and data handling are fully HIPAA-compliant.</div>
               </div>
             </div>
 
@@ -808,7 +892,7 @@ export default function ContactPage() {
         </div>
 
         {/* MAP */}
-        <section className="map-section" id="map-section">
+        <section className="map-section" id="map-section" style={{ display: 'none' }} aria-hidden="true">
           <div className="map-inner">
             <div className="map-header reveal reveal-2">
               <span className="eyebrow eyebrow-dark">— Our Location</span>
@@ -832,9 +916,8 @@ export default function ContactPage() {
           <div className="trust-strip-inner">
             {[
               { label: 'HIPAA Compliant', path: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /> },
-              { label: '24hr Response', path: <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></> },
+              { label: '1 Business Day Response', path: <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></> },
               { label: 'Free Consultation', path: <polyline points="20 6 9 17 4 12" /> },
-              { label: '500+ Practices', path: <><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" /></> },
             ].map((t, i) => (
               <div className="trust-item" key={i}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

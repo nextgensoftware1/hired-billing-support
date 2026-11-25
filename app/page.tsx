@@ -171,27 +171,13 @@ export default function Home() {
                 </a>
                 <a href="/contact" className="btn btn-text">CONTACT →</a>
               </div>
-              <div className="hero-meta reveal reveal-5">
-                <div className="hero-meta-item">
-                  <span className="num">98<span style={{ color: 'var(--signal)' }}>%</span></span>
-                  <span className="lbl">Clean-claim rate</span>
-                </div>
-                <div className="hero-meta-item">
-                  <span className="num">22<span style={{ color: 'var(--signal)' }}>d</span></span>
-                  <span className="lbl">Avg. days in AR</span>
-                </div>
-                <div className="hero-meta-item">
-                  <span className="num">$1.2<span style={{ color: 'var(--signal)' }}>M+</span></span>
-                  <span className="lbl">Recovered for clients in '25</span>
-                </div>
-              </div>
             </div>
             {/* Operational dashboard card */}
             <div className="reveal reveal-4" style={{ animationDelay: '0.5s' }}>
               <div className="hero-card">
                 <div className="hero-card-header">
-                  <span className="label"><span className="live-dot" />LIVE · CLIENT WORKSPACE</span>
-                  <span className="label" style={{ fontVariantNumeric: 'tabular-nums' }}>14 MAY · 09:42</span>
+                  <span className="label"><span className="sample-dot" />Sample dashboard — illustrative data</span>
+                  <span className="label" style={{ fontVariantNumeric: 'tabular-nums' }}>Illustration</span>
                 </div>
                 <div className="stat-grid">
                   <div className="stat-cell">
@@ -255,12 +241,12 @@ export default function Home() {
           </div>
           <div className="pain-ledger fade-in">
             {[
-              { num: '01', title: 'Front desk is overwhelmed', desc: 'Phones don\'t stop. Verifications pile up. No-shows go uncalled. Schedules leak revenue.', stat: '+34% call volume' },
-              { num: '02', title: 'Claims are aging', desc: 'Claims sit in 60+ buckets. AR keeps growing. Cash flow is unpredictable.', stat: '$1 in $4 lost' },
-              { num: '03', title: 'Denials are increasing', desc: 'Payer rules shift weekly. Coding errors slip through. Appeals never get filed.', stat: '~18% denial rate' },
-              { num: '04', title: 'Staff costs are rising', desc: 'W-2s, benefits, turnover, training, PTO. Salaries outpacing reimbursement, every year.', stat: '+11% YoY overhead' },
-              { num: '05', title: 'Doctors are doing admin', desc: 'Charting after hours. Chasing prior auths. Doing the work two people should be doing.', stat: '2 hrs / day lost' },
-              { num: '06', title: 'Hiring is broken', desc: '90 days to fill a billing seat. 6 months to train. 14 months to lose them.', stat: '$22k cost / hire' }
+              { num: '01', title: 'Front desk is overwhelmed', desc: 'Phones don\'t stop. Verifications pile up. No-shows go uncalled. Schedules leak revenue.', stat: '' },
+              { num: '02', title: 'Claims are aging', desc: 'Claims sit in 60+ buckets. AR keeps growing. Cash flow is unpredictable.', stat: '' },
+              { num: '03', title: 'Denials are increasing', desc: 'Payer rules shift weekly. Coding errors slip through. Appeals never get filed.', stat: '' },
+              { num: '04', title: 'Staff costs are rising', desc: 'W-2s, benefits, turnover, training, PTO. Salaries outpacing reimbursement, every year.', stat: '' },
+              { num: '05', title: 'Doctors are doing admin', desc: 'Charting after hours. Chasing prior auths. Doing the work two people should be doing.', stat: '' },
+              { num: '06', title: 'Hiring is broken', desc: '90 days to fill a billing seat. 6 months to train. 14 months to lose them.', stat: '' }
             ].map((pain, idx) => (
               <div key={idx} className="pain-row">
                 <div className="pn">{pain.num}</div>
@@ -423,7 +409,7 @@ export default function Home() {
                   {
                     num: '01',
                     title: 'Automated eligibility & scrubbing',
-                    desc: 'Every claim is validated against payer rules before submission. First-pass rate above 98%.'
+                    desc: 'Every claim is validated against payer rules before submission.'
                   },
                   {
                     num: '02',
@@ -476,29 +462,6 @@ export default function Home() {
                 <div className="on">Faster reimbursement. Cleaner books.</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* STATS SECTION */}
-      <section className="block">
-        <div className="container">
-          <div className="block-head fade-in">
-            <div className="eyebrow">By the numbers</div>
-            <h2 className="display">What it looks like <em>after 90 days.</em></h2>
-          </div>
-          <div className="stats-row fade-in">
-            {[
-              { figure: '+27', unit: '%', desc: 'Average collections lift within the first quarter of full RCM engagement.' },
-              { figure: '22', unit: 'd', desc: 'Average days in AR for active clients — down from a 47-day baseline.' },
-              { figure: '98', unit: '%', desc: 'First-pass clean-claim rate across all submitted claims, all specialties.' },
-              { figure: '60', unit: '%', desc: 'Lower operating cost versus building the equivalent in-house team.' }
-            ].map((stat, idx) => (
-              <div key={idx} className="stat-block">
-                <div className="figure">{stat.figure}<span className="unit">{stat.unit}</span></div>
-                <div className="desc">{stat.desc}</div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -592,7 +555,7 @@ export default function Home() {
               <p style={{ fontSize: '17px', lineHeight: '1.65', color: 'var(--ink-mute)', marginTop: '24px', maxWidth: '560px' }}>
                 We operate to HIPAA standards across our entire stack — workstations, networks, communications, and access controls. Every team member is BAA-bound, background-checked, and trained on PHI handling before they touch your data.
               </p>
-              <Link href="/contact" className="btn btn-ghost" style={{ marginTop: '32px' }}>Read the security overview →</Link>
+              <Link href="/contact" className="btn btn-ghost" style={{ marginTop: '32px' }}>Ask about security →</Link>
             </div>
             <div className="compliance-badges">
               {[
@@ -693,7 +656,7 @@ export default function Home() {
           <p>Book a 30-minute discovery call. We'll audit your current operations and show you exactly where time and revenue are leaking — no pitch, no obligation.</p>
           <div className="actions">
             <Link href="/contact" className="btn btn-light">
-              Book a discovery call
+              Request a call
               <svg className="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>

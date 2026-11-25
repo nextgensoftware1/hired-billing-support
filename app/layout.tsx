@@ -12,6 +12,7 @@ import CanonicalTags from './components/CanonicalTags';
 import './globals.css';
 import './accessibility.css'; // readability layer — must stay after globals.css
 import HBSChatbot from "./components/HBSChatbot";
+import AttributionCapture from './components/AttributionCapture';
 
 // Load fonts with display: 'swap' to prevent FOIT
 const fraunces = Fraunces({
@@ -42,7 +43,7 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://hiredbillingsupport.com'),
-  title: 'Pre-trained Remote Healthcare Teams | Fully Managed',
+  title: 'Medical & Dental Billing Services | Hired Billing Support',
   description: 'Embedded healthcare billing, RCM, AR, credentialing, and operations support that helps practices reduce burden and protect revenue.',
   robots: {
     index: true,
@@ -78,6 +79,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <AttributionCapture />
         <Suspense fallback={null}>
           <CanonicalTags />
         </Suspense>

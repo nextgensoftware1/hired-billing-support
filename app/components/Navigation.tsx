@@ -64,7 +64,7 @@ function TrustBadgesSection({ onClick }: TrustBadgesSectionProps) {
       <button
         type="button"
         className="dropdown-trust-badge"
-        aria-label="SOC 2 Certified"
+        aria-label="SOC 2 Aligned"
         onClick={onClick}
       >
         <span className="dropdown-trust-badge-icon" aria-hidden="true">
@@ -73,7 +73,7 @@ function TrustBadgesSection({ onClick }: TrustBadgesSectionProps) {
             <path d="m9 12 2 2 4-4" />
           </svg>
         </span>
-        <span className="dropdown-trust-badge-label">SOC 2 Certified</span>
+        <span className="dropdown-trust-badge-label">SOC 2 Aligned</span>
       </button>
     </div>
   );

@@ -992,6 +992,25 @@ nav.top.scrolled {
     margin-right: 6px;
 }
 
+.sample-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--signal);
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: 1px;
+}
+
+.hero-card-header {
+    gap: 12px;
+}
+
+.hero-card-header .label:last-child {
+    flex-shrink: 0;
+    color: rgba(250, 247, 242, 0.62);
+}
+
 @keyframes pulse {
 
     0%,

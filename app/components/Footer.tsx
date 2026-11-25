@@ -79,11 +79,11 @@ export default function Footer() {
           <div className="footer-col">
             <h6>Solutions</h6>
             <ul>
-              <li><Link href="/who-we-serve/start-ups">Private Practices</Link></li>
-              <li><Link href="/who-we-serve/small-medical-practices">Medical Groups</Link></li>
-              <li><Link href="/who-we-serve/medium-large-medical-practices">Behavioral Health</Link></li>
-              <li><Link href="/who-we-serve/fqhc">Dental Practices</Link></li>
-              <li><Link href="/who-we-serve/enterprise-medical-operation">Urgent Care</Link></li>
+              <li><Link href="/who-we-serve/start-ups">Start-Up Practices</Link></li>
+              <li><Link href="/who-we-serve/small-medical-practices">Small Medical Practices</Link></li>
+              <li><Link href="/who-we-serve/medium-large-medical-practices">Medium &amp; Large Medical Practices</Link></li>
+              <li><Link href="/who-we-serve/fqhc">Article 28 Facilities</Link></li>
+              <li><Link href="/who-we-serve/enterprise-medical-operation">Enterprise Medical Operations</Link></li>
             </ul>
           </div>
 

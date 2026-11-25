@@ -573,24 +573,6 @@ export default function CaseStudyPage() {
           </div>
         </section>
 
-        {/* TRUST STRIP */}
-        <div className="trust-strip">
-          <div className="trust-strip-inner">
-            {[
-              { label: '500+ Practices Served', path: <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /> },
-              { label: '98% Satisfaction Rate', path: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /> },
-              { label: 'HIPAA Compliant', path: <polyline points="20 6 9 17 4 12" /> },
-              { label: '24/7 Support', path: <><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></> },
-            ].map((t, i) => (
-              <div className="trust-item" key={i}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  {t.path}
-                </svg>
-                {t.label}
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </>
   );

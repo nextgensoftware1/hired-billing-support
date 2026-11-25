@@ -382,7 +382,7 @@ export default function enterprise() {
       <h2 className="display">Send us your AR aging and denial summary.  <em>We will show you where the gaps are.</em></h2>
       <p>Within 10 business days, we deliver a free enterprise operations assessment — where revenue is leaking, which workflows need standardization, and what a scalable support model looks like for your organization.</p>
       <div className="actions">
-        <a href="/contact" className="btn btn-light">Book a discovery call
+        <a href="/contact" className="btn btn-light">Request a call
           <svg className="arrow" width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>

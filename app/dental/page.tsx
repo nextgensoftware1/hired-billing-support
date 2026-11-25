@@ -1,56 +1,4 @@
 import Link from 'next/link';
-import TestimonialCarousel from './TestimonialCarousel';
-
-const testimonials = [
-  {
-    quote: 'Partnering with Hired Billing Support gave us peace of mind. Our billing is cleaner, our staff works on patient care instead of paperwork, and we are now capturing more appointments than ever.',
-    avatar: 'RE',
-    name: 'Dr Ruth - Edwin DMD/MS',
-    role: 'Diplomate of American Board of Periodontology',
-  },
-  {
-    quote: 'Working with HBS has been a game-changer. The team is professional, responsive, and has streamlined our billing operations seamlessly.',
-    avatar: 'HM',
-    name: 'Herma Thompson PMHNP-BC',
-    role: 'Nurse Practitioner - Psych/Mental Health',
-  },
-  {
-    quote: 'HBS identified three payers underpaying our E&M claims for over a year. Recovered $40,000 in one quarter.',
-    avatar: 'JW',
-    name: 'James Whitfield MBA, CMPE',
-    role: 'Certified Medical Practice Executive',
-  },
-  {
-    quote: 'Prior auth denials dropped from 11% to under 3% in 60 days. HBS tracks every authorization before it expires.',
-    avatar: 'RM',
-    name: 'Dr. Rehan Malik MD, FACC',
-    role: 'Interventional Cardiologist',
-  },
-  {
-    quote: 'Partnering with Hired Billing Support gave us peace of mind. Our billing is cleaner, our staff works on patient care instead of paperwork, and we are now capturing more appointments than ever.',
-    avatar: 'RE',
-    name: 'Dr Ruth - Edwin DMD/MS',
-    role: 'Diplomate of American Board of Periodontology',
-  },
-  {
-    quote: 'Working with HBS has been a game-changer. The team is professional, responsive, and has streamlined our billing operations seamlessly.',
-    avatar: 'HM',
-    name: 'Herma Thompson PMHNP-BC',
-    role: 'Nurse Practitioner - Psych/Mental Health',
-  },
-  {
-    quote: 'HBS identified three payers underpaying our E&M claims for over a year. Recovered $40,000 in one quarter.',
-    avatar: 'JW',
-    name: 'James Whitfield MBA, CMPE',
-    role: 'Certified Medical Practice Executive',
-  },
-  {
-    quote: 'Prior auth denials dropped from 11% to under 3% in 60 days. HBS tracks every authorization before it expires.',
-    avatar: 'RM',
-    name: 'Dr. Rehan Malik MD, FACC',
-    role: 'Interventional Cardiologist',
-  },
-];
 
 export const metadata = {
   title: 'Dental Staffing Services | Hired Billing Support',
@@ -113,7 +61,7 @@ export default function dental() {
       <div className="stat-section">
 
         <div className="stat-box">
-          <div className="stat-number">70%</div>
+          <div className="stat-number" aria-label="Cost information removed pending approval"></div>
           <div className="stat-label">LESS COST</div>
         </div>
 
@@ -121,8 +69,7 @@ export default function dental() {
 
           <p className="stat-description">
             HBS gives you an embedded operations team—calls, billing,
-            insurance verification, RCM, and admin support—at
-            70% less than hiring in-house staff.
+            insurance verification, RCM, and admin support.
           </p>
 
           <p className="stat-subtext">
@@ -167,7 +114,7 @@ export default function dental() {
 
         <div className="dash-header">
           <div className="dash-header-label">
-            — Dental Operations · Live Dashboard
+            — Dental Operations · Sample dashboard — illustrative data
           </div>
 
           <div className="dash-main-row">
@@ -333,7 +280,7 @@ export default function dental() {
 
   </div>
 </section>
-  <div className="trust-strip">
+  <div className="trust-strip" style={{ display: 'none' }} aria-hidden="true">
   {/* DENTAL PRACTICE CLIENT LOGO SLIDER */}
   <div className="logo-strip reveal reveal-4" style={{animationDelay: '.7s'}}>
 
@@ -463,7 +410,7 @@ export default function dental() {
           <div className="ptitle">Missed calls are costing you new patients.</div>
           <div className="pdesc">The phone rings during check-in, during a benefits call, during the lunch rush. Every
             missed call is a potential new patient who called the next practice on the list instead.</div>
-          <div className="pstat">35% unanswered</div>
+          <div className="pstat"></div>
         </div>
         <div className="pain-row">
           <div className="pn">02</div>
@@ -475,8 +422,7 @@ export default function dental() {
         <div className="pain-row">
           <div className="pn">03</div>
           <div className="ptitle">Production looks strong. Collections do not.</div>
-          <div className="pdesc">You are producing well but collecting 70-80% of it. The industry benchmark is 98%. That gap
-            is somebody's salary — maybe two.</div>
+          <div className="pdesc">Production and collections should be reviewed together so the practice can identify gaps in the follow-up process.</div>
           <div className="pstat">20pt gap = $$$</div>
         </div>
         <div className="pain-row">
@@ -484,28 +430,28 @@ export default function dental() {
           <div className="ptitle">Claims are submitted but not tracked.</div>
           <div className="pdesc">Claims go out. Some come back denied. Most just sit. Nobody has the bandwidth to follow
             up on every one past 30 days, and 90+ day buckets keep growing.</div>
-          <div className="pstat">30% recovery loss</div>
+          <div className="pstat"></div>
         </div>
         <div className="pain-row">
           <div className="pn">05</div>
           <div className="ptitle">Treatment plans are not getting followed up.</div>
           <div className="pdesc">Patients leave with a treatment plan and never hear back. Unscheduled treatment sits on a
             report nobody reviews. Revenue that was already accepted does not make it onto the schedule.</div>
-          <div className="pstat">-12% acceptance</div>
+          <div className="pstat"></div>
         </div>
         <div className="pain-row">
           <div className="pn">06</div>
           <div className="ptitle">Outbound calls get skipped every day.</div>
           <div className="pdesc">Recall calls, appointment reminders, patient balance follow-up, no-show follow-up,
             reactivation campaigns. They are all on the list. They all get pushed to tomorrow.</div>
-          <div className="pstat">~$3-5k/mo lost</div>
+          <div className="pstat"></div>
         </div>
         <div className="pain-row">
           <div className="pn">07</div>
           <div className="ptitle">PPO write-offs are quietly bleeding you.</div>
           <div className="pdesc">You are writing off contracted amounts you should be appealing. Nobody has the bandwidth to
             dig into fee schedule discrepancies, underpayments, or payer adjustments.</div>
-          <div className="pstat">$4-11k/month</div>
+          <div className="pstat"></div>
         </div>
         <div className="pain-row">
           <div className="pn">08</div>
@@ -598,7 +544,7 @@ export default function dental() {
         <div className="service-card-tag tag-rcm">RCM</div>
         <h4>Dental RCM Support</h4>
         <div className="pain">Pain: Claims sitting, AR growing, collections lagging</div>
-        <p>CDT-coded claim submission, claim follow-up, payment posting, denial management, PPO write-off review, underpayment appeals and insurance aging review, with clear production-to-collection visibility. Clean-claim rate above 98%.</p>
+        <p>CDT-coded claim submission, claim follow-up, payment posting, denial management, PPO write-off review, underpayment appeals and insurance aging review, with clear production-to-collection visibility.</p>
         <div className="outcome">→ Steady cash flow. Collections match production.</div>
       </div>
       <div className="service-card">
@@ -612,7 +558,7 @@ export default function dental() {
         <div className="service-card-tag tag-ar">AR &amp; Claims</div>
         <h4>AR &amp; Claim Follow-Up</h4>
         <div className="pain">Pain: Aging AR, untouched 90+ buckets, slow recovery</div>
-        <p>We work every aging bucket: 30, 60, 90 and 120+ days. Payer calls, resubmissions, narrative appeals, denial categorization and payment resolution are all covered. Most dental clients see AR days fall below 25 within 90 days.</p>
+        <p>We work every aging bucket: 30, 60, 90 and 120+ days. Payer calls, resubmissions, narrative appeals, denial categorization and payment resolution are all covered.</p>
         <div className="outcome">→ Faster payments, smaller buckets, more revenue.</div>
       </div>
       <div className="service-card">
@@ -664,7 +610,7 @@ export default function dental() {
     </div>
     {/* <div className="pull-quote fade-in">Your front desk does not need to choose between the patient standing in front of them and the patient calling on the phone. HBS makes sure both are taken care of.</div> */}
       {/* TESTIMONIALS SECTION */}
-      <TestimonialCarousel testimonials={testimonials} />
+      {/* Testimonials are hidden until written permission is confirmed. */}
   </div>
 </section>
 
@@ -832,7 +778,7 @@ export default function dental() {
     </div>
     <div className="outcome-grid fade-in">
       <div className="outcome-card">
-        <div className="outcome-card-icon">97%</div>
+        <div className="outcome-card-icon">—</div>
         <h4>Patient calls answered</h4>
         <p>Fewer missed calls, fewer lost new patients, fewer voicemails that never get returned.</p>
       </div>
@@ -842,22 +788,22 @@ export default function dental() {
         <p>Benefits documented in the chart before the patient sits down. No more chair-side scrambling.</p>
       </div>
       <div className="outcome-card">
-        <div className="outcome-card-icon">98%</div>
+        <div className="outcome-card-icon">—</div>
         <h4>First-pass clean claim rate</h4>
         <p>CDT-coded, attachment-included, payer-validated claims submitted within 24 hours of the procedure.</p>
       </div>
       <div className="outcome-card">
-        <div className="outcome-card-icon">25d</div>
+        <div className="outcome-card-icon">—</div>
         <h4>AR days from 47-day baseline</h4>
         <p>Every aging bucket worked. Payer calls made. Re-submissions filed. AR days drop within 90 days.</p>
       </div>
       <div className="outcome-card">
-        <div className="outcome-card-icon">+24%</div>
+        <div className="outcome-card-icon">—</div>
         <h4>Monthly collections lift</h4>
         <p>Average collections increase across active dental clients — same production, more money in the bank.</p>
       </div>
       <div className="outcome-card">
-        <div className="outcome-card-icon">$7.5k</div>
+        <div className="outcome-card-icon">—</div>
         <h4>PPO write-off recovery</h4>
         <p>Average recovery in the first 60 days from write-offs that should not have been written off.</p>
       </div>
@@ -1026,7 +972,7 @@ export default function dental() {
       <h2 className="display">Send us your production report and aging summary. <em>We will show you where the gap is.</em></h2>
       <p>Within 5 business days, we will come back with a free audit showing exactly where revenue is leaking — missed calls, unverified insurance, unworked AR, treatment follow-up gaps — and what we would do about it. No pitch. No pressure. If the audit shows you do not need us, we will tell you.</p>
       <div className="actions">
-        <a href="/contact" className="btn btn-light">Book a discovery call
+        <a href="/contact" className="btn btn-light">        Request a call
           <svg className="arrow" width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
             <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
